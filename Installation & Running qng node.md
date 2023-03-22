@@ -1,4 +1,3 @@
-# Task 1
  
 ## Prerequisites
 - Golang (Go) - Download and installation can be found at: https://go.dev/doc/install
