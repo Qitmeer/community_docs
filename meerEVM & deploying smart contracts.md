@@ -94,7 +94,7 @@ You can use the KAHF wallet app to easily transfer MEER from Qitmeer UTXO to Mee
 
 1. On the home page, click on the last icon labelled "Transfer"
 
-![](img/transfer-button.PNG)
+![](img/transfer-button.png)
 
 2. Select the address you would like to send it to and enter the amount.
 
@@ -102,7 +102,7 @@ You can use the KAHF wallet app to easily transfer MEER from Qitmeer UTXO to Mee
 
 4. You should see the transaction details on the screen. Click on "Transfer" to finalise the transaction.
 
-![](img/finalise.PNG)
+![](img/finalise.png)
 
 
 ## Add MeerEVM to Metamask
