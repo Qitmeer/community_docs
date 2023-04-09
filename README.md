@@ -1,5 +1,8 @@
 # Community Documents
 The Qitmeer community docs and tutorials
 
-* [Install and run QNG testnode](https://github.com/Qitmeer/community_docs/blob/main/Installation%20%26%20Running%20qng%20node.md) 
+To access the document please access [community doc website](https://qitmeer.github.io/community_docs/)
+
+To contribute to the documentation please fork this repo and create PR.
+
 
