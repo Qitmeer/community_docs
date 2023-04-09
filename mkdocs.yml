@@ -1,0 +1,8 @@
+site_name: Qitmeer Community Documents
+nav:
+  - Home: index.md
+  - About BlockDAG: What_is_BlockDAG.md
+  - Running Node: Installation_Running_qng_node.md
+  - meerEVM: meerEVM_deploying_SmartContracts.md
+theme:
+  name: material
