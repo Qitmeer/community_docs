@@ -4,5 +4,6 @@ nav:
   - About BlockDAG: What_is_BlockDAG.md
   - Running Node: Installation_Running_qng_node.md
   - meerEVM: meerEVM_deploying_SmartContracts.md
+  - Solidity Tutorial part1: solidity_tutorial_basics_part_1.md
 theme:
   name: material
