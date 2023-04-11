@@ -68,7 +68,7 @@ import 'ipfs://Qmdyq9ZmWcaryd1mgGZ4PttRNctLGUSAMpPqufsk6uRMKh';
 
 ## Comments
 
-Solidity allows for [single and multi-line comments](https://docs.soliditylang.org/en/v0.8.19/layout-of-source-files.html#comments). Single comments are denoted with `//` and multi-line comments are denoted with `/*...*/`
+Solidity allows for [single and multi-line comments](https://docs.soliditylang.org/en/v0.8.19/layout-of-source-files.html#comments). Single line comments are denoted with `//` and multi-line comments are denoted with `/*...*/`
 
 ```solidity
 // This is a single-line comment.
