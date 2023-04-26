@@ -54,9 +54,9 @@ bytes32 myBytes = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
 
 // Enums (return uint depending on index)
 enum Button {
-		OFF,
-		PENDING,
-		ON
+	OFF,
+	PENDING,
+	ON
 }
 
 /*
@@ -95,11 +95,11 @@ These types include:
 uint[5] fixArray = [10,20,30,40,50];
 
 function retrieveElementArray(uint index) public view returns (uint) {
-		return fixArray[index];
+	return fixArray[index];
 }
 
 function retrieveFullArray() public view returns (uint[5] memory) {
-	  return fixArray;
+	return fixArray;
 }
 
 /*
@@ -123,11 +123,11 @@ In a fixed array, any element not assigned will be set to its default value depe
 uint[5] fixArray = [10,30,40,50];
 
 function retrieveElementArray(uint index) public view returns (uint) {
-		return fixArray[index];
+	return fixArray[index];
 }
 
 function retrieveFullArray() public view returns (uint[5] memory) {
-	  return fixArray;
+	return fixArray;
 }
 
 /*
@@ -145,32 +145,32 @@ We can also create temporary arrays stored in memory inside of functions. Unlike
 
 ```solidity
 function createFixArray() public pure returns (uint[5] memory) {
-		uint[5] memory fixArray;
-		fixArray[0] = 10;
-		fixArray[1] = 20;
-		fixArray[2] = 30;
+	uint[5] memory fixArray;
+	fixArray[0] = 10;
+	fixArray[1] = 20;
+	fixArray[2] = 30;
 
-		return fixArray;
+	return fixArray;
 }
 ```
 
 ```solidity
 // This won't work
 function createFixArray() public pure returns (uint[5] memory) {
-		uint[5] memory fixArray;
-		fixArray = [10,20,30,40,50]; // <= TypeError: Type uint8[5] memory is not implicitly convertible to expected type uint256[5] memory
+	uint[5] memory fixArray;
+	fixArray = [10,20,30,40,50]; // <= TypeError: Type uint8[5] memory is not implicitly convertible to expected type uint256[5] memory
 	
-		return fixArray;
+	return fixArray;
 }
 ```
 
 ```solidity
 //But this will - array needs to be converted to type uint8
 function createFixArray() public pure returns (uint8[5] memory) {
-		uint8[5] memory fixArray;
-		fixArray = [10,20,30,40,50];
+	uint8[5] memory fixArray;
+	fixArray = [10,20,30,40,50];
 	
-		return fixArray;
+	return fixArray;
 }
 ```
 
@@ -183,31 +183,31 @@ function createFixArray() public pure returns (uint8[5] memory) {
 uint[] dynArray = [10,20,30,40,50];
 
 function retrieveElementDynArray(uint index) public view returns (uint) {
-		return dynArray[index];
+	return dynArray[index];
 }
 
 function retrieveFullDynArray() public view returns (uint[] memory) {
-	  return dynArray;
+	return dynArray;
 }
 
 // Find the length of the dynamic array
 function getLengthArray() public view returns (uint) {
-		return dynArray.length;
+	return dynArray.length;
 }
 
 // Append to array. This will increase the array length by 1.
 function appendArray(uint i) public {
-	  dynArray.push(i);
+	dynArray.push(i);
 }
 
 // Remove last element from array. This will decrease the array length by 1
 function popArray() public {
-		dynArray.pop();
+	dynArray.pop();
 }
 
 // Delete does not change the array length. It resets the value at index to it's default value which in this case is 0
 function removeArray(uint index) public {
-		delete dynArray[index];
+	delete dynArray[index];
 }
 
 /*
@@ -239,8 +239,8 @@ Dynamic arrays can only be created in storage. However, we can still create *dyn
 function createArray(uint len) public pure returns (uint[] memory) {
 
 	// this will still behave like a fixed array so will not inherit dynamic array functions
-		uint[] memory arr = new uint[](len);
-	  return arr;
+	uint[] memory arr = new uint[](len);
+	return arr;
 }
 ```
 
@@ -258,7 +258,7 @@ According to the [Solidity docs](https://docs.soliditylang.org/en/v0.8.17/types.
 bytes message = "Hello World!";
 
 function retrieveBytes() public view returns (bytes memory) {
-		return message;
+	return message;
 }
 
 // retrieveBytes() => bytes : 0x48656c6c6f20576f726c6421 ('Hello World!' in ASCII hexadecimal) 
@@ -268,8 +268,8 @@ We can store bytes temporarily inside functions too:
 
 ```solidity
 function storeTempBytes() public pure returns (bytes memory) {
-		bytes memory message = "Hello World!";
-    return message;
+	bytes memory message = "Hello World!";
+    	return message;
 }
 
 // storeTempBytes() => bytes : 0x48656c6c6f20576f726c6421 ('Hello World!' in ASCII hexadecimal) 
@@ -283,7 +283,7 @@ Strings operate in a similar way as with bytes. However unlike bytes, the output
 string message = "Hello World!";
 
 function retrieveString() public view returns (string memory) {
-		return message;
+	return message;
 }
 
 // retrieveString() => string : Hello World!
@@ -293,8 +293,8 @@ We can store strings temporarily inside functions too:
 
 ```solidity
 function storeTempString() public pure returns (string memory) {
-		string memory message = "Hello World!";
-    return message;
+	string memory message = "Hello World!";
+    	return message;
 }
 
 // storeTempString() => string : Hello World!
@@ -307,8 +307,8 @@ Both the `bytes` and `string` type have a built-in `concat` function that can be
 
 // Function arguments do not need to be of type 'bytes' and can be value type bytes1..32
 function concatBytes(bytes calldata b1, bytes calldata b2) public pure returns (bytes memory) {
-		bytes memory b3 = bytes.concat(b1, b2);
-    return b3;
+	bytes memory b3 = bytes.concat(b1, b2);
+    	return b3;
 }
 
 /*
@@ -317,8 +317,8 @@ concatBytes(0xab, 0xcd) => bytes : 0xabcd
 */
 
 function concatString(string calldata s1, string calldata s2) public pure returns (string memory) {
-		string memory s3 = string.concat(s1, s2);
-    return s3;
+	string memory s3 = string.concat(s1, s2);
+    	return s3;
 }
 
 /*
@@ -338,11 +338,11 @@ mapping (address => uint) values;
 // In this example the user can set a value that will be linked to their address  
 
 function setValue(uint amount) public {
-		values[msg.sender] = amount;
+	values[msg.sender] = amount;
 }
 
 function checkValue() public view returns (uint) {
-		return values[msg.sender];
+	return values[msg.sender];
 }
 
 /*
@@ -360,8 +360,8 @@ checkValue() => 100 (only if same address was also used for the setValue functio
 ```solidity
 // In this example we will create the struct "Car" and group different variables
 struct Car {
-        string make;
-        string colour;
+	string make;
+	string colour;
         uint price;
         bool isPetrol;
 }
@@ -372,10 +372,10 @@ We can also create an array of type `Car` to store our structs:
 ```solidity
 
 struct Car {
-		string make;
-    string colour;
-    uint price;
-    bool isPetrol;
+	string make;
+    	string colour;
+    	uint price;
+    	bool isPetrol;
 }
 
 // initialise our Car array here
@@ -383,13 +383,13 @@ Car[] cars;
 
 // lets create a function to create a Car struct and store it in our Car array
 function createCar(string calldata _make, string calldata _colour, uint _price, bool _isPetrol) public { 
-		Car memory c  = Car(_make, _colour, _price, _isPetrol);
-    cars.push(c);
+	Car memory c  = Car(_make, _colour, _price, _isPetrol);
+    	cars.push(c);
 }
 
 // we need to return type 'Car' just like other variable types
 function retrieveCar(uint index) public view returns (Car memory) {
-		return cars[index];
+	return cars[index];
 }
 
 /*
