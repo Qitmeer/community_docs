@@ -5,5 +5,7 @@ nav:
   - Running Node: Installation_Running_qng_node.md
   - meerEVM: meerEVM_deploying_SmartContracts.md
   - Solidity Tutorial part1: solidity_tutorial_basics_part_1.md
+  - Solidity Tutorial part2: solidity_tutorial_basics_part_2.md
+
 theme:
   name: material
