@@ -114,7 +114,7 @@ retrieveFullArray() => uint256[5] : [10,20,30,40,50]
 */
 ```
 
-- `uint` and `uint256` are exact aliases and behave exactly the same.
+> `uint` and `uint256` are exact aliases and behave exactly the same.
 
 In a fixed array, any element not assigned will be set to its default value depending on its type:
 
@@ -250,7 +250,7 @@ function createArray(uint len) public pure returns (uint[] memory) {
 
 According to the [Solidity docs](https://docs.soliditylang.org/en/v0.8.17/types.html#bytes-and-string-as-arrays):
 
-- As a general rule, use `bytes` for arbitrary-length raw byte data and `string` for arbitrary-length string (UTF-8) data. If you can limit the length to a certain number of bytes, always use one of the value types `bytes1` to `bytes32` because they are much cheaper.
+> As a general rule, use `bytes` for arbitrary-length raw byte data and `string` for arbitrary-length string (UTF-8) data. If you can limit the length to a certain number of bytes, always use one of the value types `bytes1` to `bytes32` because they are much cheaper.
     
     
 
