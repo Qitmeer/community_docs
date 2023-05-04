@@ -37,10 +37,10 @@ These types include:
 - Enum
 
 ```solidity
-// Unsigned Integer
+// Integer
 int myInt = -20;
 
-// Integer
+// Unsigned Integer
 uint myUint = 30;
 
 //Boolean
