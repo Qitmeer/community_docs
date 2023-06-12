@@ -1,4 +1,8 @@
 site_name: Qitmeer Community Documents
+
+repo_name: Qitmeer/community_docs
+repo_url: https://github.com/Qitmeer/community_docs
+
 nav:
   - Home: index.md
   - About BlockDAG: What_is_BlockDAG.md
@@ -9,6 +13,9 @@ nav:
 
 theme:
   name: material
+  icon: 
+    repo: fontawesome/brands/github
+
 
 markdown_extensions:
   - pymdownx.highlight:
