@@ -2,10 +2,20 @@ site_name: Qitmeer Community Documents
 nav:
   - Home: index.md
   - About BlockDAG: What_is_BlockDAG.md
-  - Running Node: Installation_Running_qng_node.md
-  - meerEVM: meerEVM_deploying_SmartContracts.md
-  - Solidity Tutorial part1: solidity_tutorial_basics_part_1.md
-  - Solidity Tutorial part2: solidity_tutorial_basics_part_2.md
+  - Running Qitmeer Node: Installation_Running_qng_node.md
+  - QNG - EVM & Deploying Smart Contracts: meerEVM_deploying_SmartContracts.md
+  - Solidity Tutorial (Part 1): solidity_tutorial_basics_part_1.md
+  - Solidity Tutorial (Part 2): solidity_tutorial_basics_part_2.md
 
 theme:
   name: material
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+
