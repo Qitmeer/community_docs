@@ -1,0 +1,686 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../What_is_BlockDAG/">
+      
+      
+        <link rel="next" href="../meerEVM_deploying_SmartContracts/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.15">
+    
+    
+      
+        <title>Running Qitmeer Node - Qitmeer Community Documents</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.26e3688c.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#installation-and-running-testing-qitmeer-node" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Qitmeer Community Documents" class="md-header__button md-logo" aria-label="Qitmeer Community Documents" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Qitmeer Community Documents
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Running Qitmeer Node
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Qitmeer/community_docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Qitmeer/community_docs
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Qitmeer Community Documents" class="md-nav__button md-logo" aria-label="Qitmeer Community Documents" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Qitmeer Community Documents
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Qitmeer/community_docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Qitmeer/community_docs
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../What_is_BlockDAG/" class="md-nav__link">
+        About BlockDAG
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Running Qitmeer Node
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Running Qitmeer Node
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    Prerequisites
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compile-and-build-meer-node" class="md-nav__link">
+    Compile and build MEER node
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#install-qx" class="md-nav__link">
+    Install qx
+  </a>
+  
+    <nav class="md-nav" aria-label="Install qx">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installation-instructions" class="md-nav__link">
+    Installation Instructions:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-wallet-kahf-wallet" class="md-nav__link">
+    Create Wallet (KAHF Wallet)
+  </a>
+  
+    <nav class="md-nav" aria-label="Create Wallet (KAHF Wallet)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#export-private-key" class="md-nav__link">
+    Export Private Key
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-wallet-using-qx" class="md-nav__link">
+    Create Wallet (Using qx)
+  </a>
+  
+    <nav class="md-nav" aria-label="Create Wallet (Using qx)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#commands-list" class="md-nav__link">
+    Commands List:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mining-test-coins" class="md-nav__link">
+    Mining Test Coins
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meerEVM_deploying_SmartContracts/" class="md-nav__link">
+        QNG - EVM & Deploying Smart Contracts
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../solidity_tutorial_basics_part_1/" class="md-nav__link">
+        Solidity Tutorial (Part 1)
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../solidity_tutorial_basics_part_2/" class="md-nav__link">
+        Solidity Tutorial (Part 2)
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    Prerequisites
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compile-and-build-meer-node" class="md-nav__link">
+    Compile and build MEER node
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#install-qx" class="md-nav__link">
+    Install qx
+  </a>
+  
+    <nav class="md-nav" aria-label="Install qx">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installation-instructions" class="md-nav__link">
+    Installation Instructions:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-wallet-kahf-wallet" class="md-nav__link">
+    Create Wallet (KAHF Wallet)
+  </a>
+  
+    <nav class="md-nav" aria-label="Create Wallet (KAHF Wallet)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#export-private-key" class="md-nav__link">
+    Export Private Key
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-wallet-using-qx" class="md-nav__link">
+    Create Wallet (Using qx)
+  </a>
+  
+    <nav class="md-nav" aria-label="Create Wallet (Using qx)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#commands-list" class="md-nav__link">
+    Commands List:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mining-test-coins" class="md-nav__link">
+    Mining Test Coins
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="installation-and-running-testing-qitmeer-node">Installation and Running Testing Qitmeer Node</h1>
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li>Golang (Go) - Download and installation can be found at: https://go.dev/doc/install</li>
+</ul>
+<h2 id="compile-and-build-meer-node">Compile and build MEER node</h2>
+<ul>
+<li>Clone the repository: <code>git clone https://github.com/Qitmeer/qng.git</code></li>
+<li>Enter the <code>qng</code> directory: <code>cd qng</code></li>
+<li>Run <code>make</code> command</li>
+</ul>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>&gt;<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/Qitmeer/qng.git
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>&gt;<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>qng
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>&gt;<span class="w"> </span>make
+</span></code></pre></div>
+<blockquote>
+<p>Running <code>make all</code> will also install <a href="https://github.com/Qitmeer/qng/tree/main/cmd/qx"><em>qx</em></a>, <a href="https://github.com/Qitmeer/qng/tree/main/cmd/relaynode" ><em>relay</em></a> and <em><a href="https://github.com/Qitmeer/qng/tree/main/cmd/fastibd">fastIBD</a></em></p>
+</blockquote>
+<h2 id="install-qx">Install <em>qx</em></h2>
+<p><em>qx</em> is a command-line tool and can be regarded as the “Swiss Army Knife of Qitmeer”. It can provide a range of functionalities such as: random seed generation, public/private key generation, constructing transactions etc.</p>
+<h4 id="installation-instructions">Installation Instructions:</h4>
+<blockquote>
+<p>This process can be skipped if you ran the <code>make all</code> command in the previous section.</p>
+</blockquote>
+<ul>
+<li>Enter the <code>qng/cmd/qx</code> directory: <code>cd qng/cmd/qx</code></li>
+<li>Run <code>go build</code> (you may have to run <code>go mod tidy</code> if you run into issues regarding dependencies)</li>
+<li>To run the tool, simply type <code>./qx</code></li>
+</ul>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>&gt;<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>qng/cmd/qx
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>&gt;<span class="w"> </span>go<span class="w"> </span>build
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>&gt;<span class="w"> </span>./qx
+</span></code></pre></div>
+<blockquote>
+<p>Installation of <em>qx</em> is not mandatory but may prove to be useful to complete certain tasks</p>
+</blockquote>
+<h2 id="create-wallet-kahf-wallet">Create Wallet (KAHF Wallet)</h2>
+<p><img alt="KAHF Wallet" src="https://www.kahf.io/images/logo.png" />
+- Download and install the app KAHF wallet available at: https://www.kahf.io/. KAHF is a multi-chain wallet that provides a user-friendly GUI to manage all your digital assets. After following the instructions on-screen, ensure that <em>Qitmeer Testnet</em> is also selected in order to manage assets in the Qitmeer test network environment.</p>
+<h4 id="export-private-key">Export Private Key</h4>
+<p>Using the app, you will also be able to export your private key:</p>
+<p>1) Click on the icon on the top-right hand corner:</p>
+<p><img alt="KAHF-1" src="../img/kahf-wallet.png" /></p>
+<p>2) Select <em>Check Private Key</em> and enter in your password
+3) Select <em>Qitmeer Testnet Assets (UTXO)</em>
+4) Your private key should now be displayed. You also have the option to press <em>Copy</em> to copy to your clipboard</p>
+<h2 id="create-wallet-using-qx">Create Wallet (Using <em>qx</em>)</h2>
+<p>You can use the <em>qx</em> command line to generate your own wallet:</p>
+<ul>
+<li>Enter the directory where you have placed the qx binary file (if you followed the previous instructions above, this should be at <code>qng/cmd/qx</code></li>
+<li>Generate a cryptographic secure pseudo-random entropy (seed) using the command <code>./qx entropy</code></li>
+</ul>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>&gt;<span class="w"> </span>./qx<span class="w"> </span>entropy
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>Output:<span class="w"> </span>91b69389c7df9aad1bbb58b0667f322165b965f16184aa613ee4792e27b9be28
+</span></code></pre></div>
+<p>To produce a mnemonic word-list (<a href="https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki" >BIP39</a>) enter the command:</p>
+<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>&gt;<span class="w"> </span>./qx<span class="w"> </span>mnemonic-new<span class="w"> </span>91b69389c7df9aad1bbb58b0667f322165b965f16184aa613ee4792e27b9be28
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>Output:<span class="w"> </span>museum<span class="w"> </span>region<span class="w"> </span>tiny<span class="w"> </span>moral<span class="w"> </span>whale<span class="w"> </span>final<span class="w"> </span>humble<span class="w"> </span><span class="nb">help</span><span class="w"> </span>race<span class="w"> </span>crop<span class="w"> </span>smart<span class="w"> </span>drift<span class="w"> </span>fortune<span class="w"> </span>real<span class="w"> </span>sheriff<span class="w"> </span>correct<span class="w"> </span>price<span class="w"> </span>antique<span class="w"> </span>ribbon<span class="w"> </span>venture<span class="w"> </span>tiny<span class="w"> </span>system<span class="w"> </span>weather<span class="w"> </span>all
+</span></code></pre></div>
+With this mnemonic, you can export your wallet to KAHF wallet or any other compatible wallet.</p>
+<p>Use the following commands to generate the <em>Private Key</em>, <em>Public Key</em>, <em>Address</em>, <em>Public Key (PK) Address</em> and <em>ETH Address</em>:</p>
+<blockquote>
+<p><strong>WARNING</strong>: The entropy and other values generated here, exist purely for demonstration purposes. <strong>These values should only be used in a test environment and not used to hold assets with real monetary value.</strong></p>
+</blockquote>
+<p><em>Private Key</em>:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>&gt;<span class="w"> </span>./qx<span class="w"> </span>mnemonic-new<span class="w"> </span>&lt;entropy&gt;<span class="w"> </span><span class="p">|</span><span class="w"> </span>./qx<span class="w"> </span>mnemonic-to-seed<span class="w"> </span><span class="p">|</span><span class="w"> </span>./qx<span class="w"> </span>ec-new
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>&gt;<span class="w"> </span>./qx<span class="w"> </span>mnemonic-new<span class="w"> </span>91b69389c7df9aad1bbb58b0667f322165b965f16184aa613ee4792e27b9be28<span class="w"> </span><span class="p">|</span><span class="w"> </span>./qx<span class="w"> </span>mnemonic-to-seed<span class="w"> </span><span class="p">|</span><span class="w"> </span>./qx<span class="w"> </span>ec-new
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>Output:<span class="w"> </span>12d76cda3b0d4dde6c8cad7f0df2ceb5b1690b4f3725f94226095cf04d3f21e2
+</span></code></pre></div>
+<em>Public Key</em>:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>&gt;<span class="w"> </span>./qx<span class="w"> </span>mnemonic-new<span class="w"> </span>&lt;entropy&gt;<span class="w"> </span><span class="p">|</span><span class="w"> </span>./qx<span class="w"> </span>mnemonic-to-seed<span class="w"> </span><span class="p">|</span><span class="w"> </span>./qx<span class="w"> </span>ec-new<span class="w"> </span><span class="p">|</span><span class="w"> </span>./qx<span class="w"> </span>ec-to-public
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>&gt;<span class="w"> </span>./qx<span class="w"> </span>mnemonic-new<span class="w"> </span>91b69389c7df9aad1bbb58b0667f322165b965f16184aa613ee4792e27b9be28<span class="w"> </span><span class="p">|</span><span class="w"> </span>./qx<span class="w"> </span>mnemonic-to-seed<span class="w"> </span><span class="p">|</span><span class="w"> </span>./qx<span class="w"> </span>ec-new<span class="w"> </span><span class="p">|</span><span class="w"> </span>./qx<span class="w"> </span>ec-to-public
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>Output:<span class="w"> </span>0363e43e0dfda44a34e1653f4feeb487fa8ccb88ba5b975a888913190e4a94abcd
+</span></code></pre></div>
+<em>Address</em>:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>&gt;<span class="w"> </span>./qx<span class="w"> </span>mnemonic-new<span class="w"> </span>&lt;entropy&gt;<span class="w"> </span><span class="p">|</span><span class="w"> </span>./qx<span class="w"> </span>mnemonic-to-seed<span class="w"> </span><span class="p">|</span><span class="w"> </span>./qx<span class="w"> </span>ec-new<span class="w"> </span><span class="p">|</span><span class="w"> </span>./qx<span class="w"> </span>ec-to-public<span class="w"> </span><span class="p">|</span><span class="w"> </span>./qx<span class="w"> </span>ec-to-addr<span class="w"> </span>-v<span class="w"> </span>&lt;network&gt;
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>&gt;<span class="w"> </span>./qx<span class="w"> </span>mnemonic-new<span class="w"> </span>91b69389c7df9aad1bbb58b0667f322165b965f16184aa613ee4792e27b9be28<span class="w"> </span><span class="p">|</span><span class="w"> </span>./qx<span class="w"> </span>mnemonic-to-seed<span class="w"> </span><span class="p">|</span><span class="w"> </span>./qx<span class="w"> </span>ec-new<span class="w"> </span><span class="p">|</span><span class="w"> </span>./qx<span class="w"> </span>ec-to-public<span class="w"> </span><span class="p">|</span><span class="w"> </span>./qx<span class="w"> </span>ec-to-addr<span class="w"> </span>-v<span class="w"> </span>testnet
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>Output:<span class="w"> </span>TnP7hbozSYpv8vPzHFnVfwVSJR9hhgoW5P7
+</span></code></pre></div>
+<em>Public Key Address</em>:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>&gt;<span class="w"> </span>./qx<span class="w"> </span>mnemonic-new<span class="w"> </span>&lt;entropy&gt;<span class="w"> </span><span class="p">|</span><span class="w"> </span>./qx<span class="w"> </span>mnemonic-to-seed<span class="w"> </span><span class="p">|</span><span class="w"> </span>./qx<span class="w"> </span>ec-new<span class="w"> </span><span class="p">|</span><span class="w"> </span>./qx<span class="w"> </span>ec-to-public<span class="w"> </span><span class="p">|</span><span class="w"> </span>./qx<span class="w"> </span>ec-to-pkaddr<span class="w"> </span>-v<span class="w"> </span>testnet
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>&gt;<span class="w"> </span>./qx<span class="w"> </span>mnemonic-new<span class="w"> </span>91b69389c7df9aad1bbb58b0667f322165b965f16184aa613ee4792e27b9be28<span class="w"> </span><span class="p">|</span><span class="w"> </span>./qx<span class="w"> </span>mnemonic-to-seed<span class="w"> </span><span class="p">|</span><span class="w"> </span>./qx<span class="w"> </span>ec-new<span class="w"> </span><span class="p">|</span><span class="w"> </span>./qx<span class="w"> </span>ec-to-public<span class="w"> </span><span class="p">|</span><span class="w"> </span>./qx<span class="w"> </span>ec-to-pkaddr<span class="w"> </span>-v<span class="w"> </span>testnet
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>Output:<span class="w"> </span>Tk6ts4JPqiyS5Xn1Jh9XmjADDtnBMDpoDCbcMKV2FkeGqjDJb1azt
+</span></code></pre></div></p>
+<blockquote>
+<p>The <code>-v</code> flag represents the type of network. By default this is set to "mainnet". </p>
+</blockquote>
+<p><em>ETH Address</em> (for use in MeerEVM):
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>&gt;<span class="w"> </span>./qx<span class="w"> </span>mnemonic-new<span class="w"> </span>&lt;entropy&gt;<span class="w"> </span><span class="p">|</span><span class="w"> </span>./qx<span class="w"> </span>mnemonic-to-seed<span class="w"> </span><span class="p">|</span><span class="w"> </span>./qx<span class="w"> </span>ec-new<span class="w"> </span><span class="p">|</span><span class="w"> </span>./qx<span class="w"> </span>ec-to-public<span class="w"> </span><span class="p">|</span><span class="w"> </span>./qx<span class="w"> </span>ec-to-ethaddr
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>&gt;<span class="w"> </span>./qx<span class="w"> </span>mnemonic-new<span class="w"> </span>91b69389c7df9aad1bbb58b0667f322165b965f16184aa613ee4792e27b9be28<span class="w"> </span><span class="p">|</span><span class="w"> </span>./qx<span class="w"> </span>mnemonic-to-seed<span class="w"> </span><span class="p">|</span><span class="w"> </span>./qx<span class="w"> </span>ec-new<span class="w"> </span><span class="p">|</span><span class="w"> </span>./qx<span class="w"> </span>ec-to-public<span class="w"> </span><span class="p">|</span><span class="w"> </span>./qx<span class="w"> </span>ec-to-ethaddr
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>Output:<span class="w"> </span>0x86209f32b6490Ca551b09fb4c8f70B79f513cF73
+</span></code></pre></div></p>
+<h3 id="commands-list">Commands List:</h3>
+<ul>
+<li><code>mnemonic-new</code>:  create a mnemonic word-list (<a href="https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki" >BIP39</a>) from an entropy</li>
+<li><code>mnemonic-to-seed</code>: convert a mnemonic word-list (<a href="https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki" >BIP39</a>) to its 512 bits seed</li>
+<li><code>ec-new</code>: create a new Elliptic Curve (EC) private key from an entropy (seed)</li>
+<li><code>ec-to-public</code>: derive the EC public key from a EC private key</li>
+<li><code>ec-to-addr</code>:  convert an EC public key to a payment address</li>
+<li><code>ec-to-pkaddr</code>: convert an EC public key to a payment public key address</li>
+<li><code>ec-to-ethaddr</code>: convert an EC public key to a Ethereum address</li>
+</ul>
+<h2 id="mining-test-coins">Mining Test Coins</h2>
+<p>There are several ways in which to mine MEER test coins for use in the Qitmeer testnet. Regardless of which method is used, the MEER node must have the <code>--miner</code> flag enabled as well as <code>--miningaddr=&lt;block-reward-address&gt;</code>. </p>
+<blockquote>
+<p>If the block reward were to be sent to address "TnSh92n7s4XbRiPmNrtYDttMugLVycsuars", then the flag would be <code>--miningaddr=TnSh92n7s4XbRiPmNrtYDttMugLVycsuars</code>. Both the address and PK address can be used when setting this flag.</p>
+</blockquote>
+<p>These include: 
+- Inserting the <code>--generate</code> flag before running the MEER node. <code>./qng –-testnet –-miner –-miningaddr=&lt;block-reward-address&gt; –-generate</code>. This method is the easiest to implement and will attempt to mine blocks using the onboard CPU. 
+- Installing and running the <em><a href="https://github.com/Qitmeer/qitmeer-miner">qitmeer-miner</a></em>. This method provides a greater level of control of the mining process allowing users to utilise their GPU for mining instead of their CPU, participate as a solo miner or as part of a pool etc</p>
+<p>Once you have successfully received miner reward and obtained some test coins, you can view the balance of your account on the <a href="https://testnet.meerscan.io/">Qitmeer BlockDAG Explorer Testnet</a> or <a href="https://www.kahf.io/">KAHF Wallet</a>. </p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.b4d07000.min.js"></script>
+      
+    
+  </body>
+</html>
