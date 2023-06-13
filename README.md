@@ -5,4 +5,14 @@ To access the document please access [community doc website](https://qitmeer.git
 
 To contribute to the documentation please fork this repo and create PR.
 
+## Installation - Mkdocs
+`pip install mkdocs` 
+
+## Mkdocs Theme - Material
+`pip install mkdocs-material` 
+
+## Syntax Highlighting
+`pip install Pygments`
+
+`pip install pymdown-extensions`
 
