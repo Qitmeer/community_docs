@@ -37,10 +37,10 @@ These types include:
 - Enum
 
 ```solidity
-// Unsigned Integer
+// Integer
 int myInt = -20;
 
-// Integer
+// Unsigned Integer
 uint myUint = 30;
 
 //Boolean
@@ -114,7 +114,7 @@ retrieveFullArray() => uint256[5] : [10,20,30,40,50]
 */
 ```
 
-- `uint` and `uint256` are exact aliases and behave exactly the same.
+> `uint` and `uint256` are exact aliases and behave exactly the same.
 
 In a fixed array, any element not assigned will be set to its default value depending on its type:
 
@@ -250,7 +250,7 @@ function createArray(uint len) public pure returns (uint[] memory) {
 
 According to the [Solidity docs](https://docs.soliditylang.org/en/v0.8.17/types.html#bytes-and-string-as-arrays):
 
-- As a general rule, use `bytes` for arbitrary-length raw byte data and `string` for arbitrary-length string (UTF-8) data. If you can limit the length to a certain number of bytes, always use one of the value types `bytes1` to `bytes32` because they are much cheaper.
+> As a general rule, use `bytes` for arbitrary-length raw byte data and `string` for arbitrary-length string (UTF-8) data. If you can limit the length to a certain number of bytes, always use one of the value types `bytes1` to `bytes32` because they are much cheaper.
     
     
 
@@ -269,7 +269,7 @@ We can store bytes temporarily inside functions too:
 ```solidity
 function storeTempBytes() public pure returns (bytes memory) {
 	bytes memory message = "Hello World!";
-    	return message;
+	return message;
 }
 
 // storeTempBytes() => bytes : 0x48656c6c6f20576f726c6421 ('Hello World!' in ASCII hexadecimal) 
@@ -294,7 +294,7 @@ We can store strings temporarily inside functions too:
 ```solidity
 function storeTempString() public pure returns (string memory) {
 	string memory message = "Hello World!";
-    	return message;
+	return message;
 }
 
 // storeTempString() => string : Hello World!
@@ -308,7 +308,7 @@ Both the `bytes` and `string` type have a built-in `concat` function that can be
 // Function arguments do not need to be of type 'bytes' and can be value type bytes1..32
 function concatBytes(bytes calldata b1, bytes calldata b2) public pure returns (bytes memory) {
 	bytes memory b3 = bytes.concat(b1, b2);
-    	return b3;
+	return b3;
 }
 
 /*
@@ -318,7 +318,7 @@ concatBytes(0xab, 0xcd) => bytes : 0xabcd
 
 function concatString(string calldata s1, string calldata s2) public pure returns (string memory) {
 	string memory s3 = string.concat(s1, s2);
-    	return s3;
+	return s3;
 }
 
 /*
@@ -362,8 +362,8 @@ checkValue() => 100 (only if same address was also used for the setValue functio
 struct Car {
 	string make;
 	string colour;
-        uint price;
-        bool isPetrol;
+	uint price;
+	bool isPetrol;
 }
 ```
 
@@ -373,9 +373,9 @@ We can also create an array of type `Car` to store our structs:
 
 struct Car {
 	string make;
-    	string colour;
-    	uint price;
-    	bool isPetrol;
+	string colour;
+	uint price;
+	bool isPetrol;
 }
 
 // initialise our Car array here
@@ -384,7 +384,7 @@ Car[] cars;
 // lets create a function to create a Car struct and store it in our Car array
 function createCar(string calldata _make, string calldata _colour, uint _price, bool _isPetrol) public { 
 	Car memory c  = Car(_make, _colour, _price, _isPetrol);
-    	cars.push(c);
+	cars.push(c);
 }
 
 // we need to return type 'Car' just like other variable types

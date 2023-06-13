@@ -1,10 +1,10 @@
-# meerEVM and deploying SmartContracts
+# QNG - EVM & Deploying Smart Contracts
 
-## MeerEVM - setting up node
+## QNG - setting up node
 
-To interact with the MeerEVM (testnet), you would need to configure your MEER node by including both the `--testnet` and `--evmenv` flag and specifying the necessary parameters before starting the node.
+To interact with the QNG (testnet), you would need to configure your Qitmeer node by including both the `--testnet` and `--evmenv` flag and specifying the necessary parameters before starting the node.
 
-Interacting with MeerEVM requires the client sending a series of JSON-RPC API methods to the node which can only be done by enabling a server on the node to accept JSON-RPC requests. 
+Interacting with QNG requires the client sending a series of JSON-RPC API methods to the node which can only be done by enabling a server on the node to accept JSON-RPC requests. 
 
 Currently you can use the API via RPC through these protocols:
 - **HTTP**
@@ -37,7 +37,7 @@ To enable the WebSockets, you would need to insert the `--ws` parameter inside o
 
 ## *cli.sh*
 
-*cli.sh* is a bash script that will allow you to run JSON-RPC methods on the Qitmeer UTXO network (**not MeerEVM**).
+*cli.sh* is a bash script that will allow you to run JSON-RPC methods on the Qitmeer UTXO network (**not QNG**).
 
 Before the running the script you must set the corresponding variables to match the settings of the Qitmeer UTXO RPC server running on the node:
 
@@ -48,7 +48,7 @@ Before the running the script you must set the corresponding variables to match 
 
 > The port number for the Qitmeer RPC server is by default, set to **18131** unless changed otherwise. 
 
-> Again, the configuration settings must match the RPC server for the Qitmeer network and not MeerEVM or what has been entered in the `--evmenv` flag.
+> Again, the configuration settings must match the RPC server for the Qitmeer network and not QNG or what has been entered in the `--evmenv` flag.
 
 If the default values do not correspond to those set on the node, then, they must be changed. You can alter the settings by issuing the following command:
 
@@ -83,13 +83,13 @@ function get_result(){
 ```
 
 
-## Cross-chain Exchange (Qitmeer -> MeerEVM)
+## Cross-chain Exchange (Qitmeer -> QNG)
 
-It is possible to exchange your MEER coins from the Qitmeer UTXO network to MeerEVM.
+It is possible to exchange your MEER coins from the Qitmeer UTXO network to QNG.
 
 ### Method 1: Using KAHF Wallet
 
-You can use the KAHF wallet app to easily transfer MEER from Qitmeer UTXO to MeerEVM
+You can use the KAHF wallet app to easily transfer MEER from Qitmeer UTXO to QNG
 
 
 1. On the home page, click on the last icon labelled "Transfer"
@@ -105,14 +105,14 @@ You can use the KAHF wallet app to easily transfer MEER from Qitmeer UTXO to Mee
 ![](img/finalise.PNG)
 
 
-## Add MeerEVM to Metamask
+## Add QNG to Metamask
 
 You must have the **<a href="https://metamask.io/download/">Metamask browser extension</a>** installed before proceeding ahead. 
 
 ### Method 1: use public RPC node (easier option)
 You can take advantage of a public RPC endpoint to deploy your smart contracts, rather than host the infrastructure yourself. 
 
-The first thing to do is to add the MeerEVM network to your Metamask wallet.
+The first thing to do is to add the QNG network to your Metamask wallet.
 
 Click on the Metamask browser extension icon and click on the circular icon on the top right:
 
@@ -122,11 +122,11 @@ Next click on Settings > Networks > Add Network
 
 Add the following information to allow the wallet to connect to the RPC endpoint: 
 
-- **Network Name**: MeerEVM - Testnet 
+- **Network Name**: QNG - Testnet 
 - **New RPC URL**: https://explorer.qitmeer.io/rpc
 - **Chain ID**: 223
 - **Currency Symbol**: MEER
-- **Block Explorer URL**: https://testnet.qng.meerscan.io/
+- **Block Explorer URL**: https://qng-testnet.meerscan.io/
 
 It should look something like this:
 
@@ -155,12 +155,12 @@ Click on "Expand View" and copy the URL of the address bar. You should see it st
 
 3. Click on the "Save" button. Metamask will attempt to connect to the endpoint. If you do not encounter any errors then the process has been a success. 
 
-## Deploy Smart Contract on MeerEVM
+## Deploy Smart Contract on QNG
 
-In this section we will attempt to deploy a "Hello World" smart contract on MeerEVM. In this example we will be using <a href="https://remix.ethereum.org/">Remix IDE</a> although you can use any library or development environment (such as Hardhat, Truffle etc.) to complete this task.
+In this section we will attempt to deploy a "Hello World" smart contract on QNG. In this example we will be using <a href="https://remix.ethereum.org/">Remix IDE</a> although you can use any library or development environment (such as Hardhat, Truffle etc.) to complete this task.
 
 The contract we will attempt to deploy is:
-```
+```solidity
 // Available at https://blog.chain.link/how-to-create-a-hello-world-smart-contract-with-solidity/
 // SPDX-License-Identifier: MIT
 
@@ -175,7 +175,7 @@ contract HelloWorld {
 
 ### Connect Metamask to Remix IDE
 
-1. Select the right network for your Metamask wallet. This should be "MeerEVM - Testnet" (or whatever you decided to call it)
+1. Select the right network for your Metamask wallet. This should be "QNG - Testnet" (or whatever you decided to call it)
 
 ![](img/remix-metamask-1.PNG)
 
@@ -188,7 +188,8 @@ contract HelloWorld {
 ![](img/remix-metamask-3.PNG)
 
 4. Click on the "File Explorer" tab, click on "Create new file" and name it `hello-world.sol` and copy and paste the following code:
-```
+```solidity
+
 // Available at https://blog.chain.link/how-to-create-a-hello-world-smart-contract-with-solidity/
 // SPDX-License-Identifier: MIT
 
@@ -207,11 +208,11 @@ contract HelloWorld {
 
 ![](img/remix-deploy-2.PNG)
 
-6. Click on the "Deploy and run transactions tab" and select the "hello-world.sol" smart contract. Click "deploy" to deploy onto MeerEVM. You should get a prompt by Metamask asking whether you would like to confirm the transaction. Click "accept". 
+6. Click on the "Deploy and run transactions tab" and select the "hello-world.sol" smart contract. Click "deploy" to deploy onto QNG. You should get a prompt by Metamask asking whether you would like to confirm the transaction. Click "accept". 
 
 ![](img/remix-deploy-3.PNG)
 
-We can view our transaction on the MeerEVM Testnet Explorer: https://testnet.qng.meerscan.io/tx/0xbf52631a396aaac1f90c58ee721e5c0c09882564ab2f2e3c52444804780695ca
+We can view our transaction on the QNG Testnet Explorer: https://testnet.qng.meerscan.io/tx/0xbf52631a396aaac1f90c58ee721e5c0c09882564ab2f2e3c52444804780695ca
 
 ![](img/block-explorer.PNG)
 

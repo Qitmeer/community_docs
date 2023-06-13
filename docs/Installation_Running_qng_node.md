@@ -124,7 +124,7 @@ There are several ways in which to mine MEER test coins for use in the Qitmeer t
 > If the block reward were to be sent to address "TnSh92n7s4XbRiPmNrtYDttMugLVycsuars", then the flag would be `--miningaddr=TnSh92n7s4XbRiPmNrtYDttMugLVycsuars`. Both the address and PK address can be used when setting this flag.
 
 These include: 
-- Inserting the `--generate` flag before running the MEER node. `./qng –-testnet –-mining –-miningaddr=<block-reward-address> –-generate`. This method is the easiest to implement and will attempt to mine blocks using the onboard CPU. 
+- Inserting the `--generate` flag before running the MEER node. `./qng –-testnet –-miner –-miningaddr=<block-reward-address> –-generate`. This method is the easiest to implement and will attempt to mine blocks using the onboard CPU. 
 - Installing and running the *<a href="https://github.com/Qitmeer/qitmeer-miner">qitmeer-miner</a>*. This method provides a greater level of control of the mining process allowing users to utilise their GPU for mining instead of their CPU, participate as a solo miner or as part of a pool etc
 
 Once you have successfully received miner reward and obtained some test coins, you can view the balance of your account on the <a href="https://testnet.meerscan.io/">Qitmeer BlockDAG Explorer Testnet</a> or <a href="https://www.kahf.io/">KAHF Wallet</a>. 
