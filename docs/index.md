@@ -27,6 +27,7 @@ Name conventions used in the Qitmeer blockchain system and networks are as follo
 * [QNG and Deploying Smart Contracts](meerEVM_deploying_SmartContracts.md)
 * [Solidity Tutorial (Part 1)](solidity_tutorial_basics_part_1.md)
 * [Solidity Tutorial (Part 2)](solidity_tutorial_basics_part_2.md)
+* [Solidity Tutorial (Part 3)](solidity_tutorial_basics_part_3.md)
 
 
 For latest Qitmeer project source code visit [Qitmeer/QNG](https://github.com/Qitmeer/qng).

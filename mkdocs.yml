@@ -10,6 +10,8 @@ nav:
   - QNG - EVM & Deploying Smart Contracts: meerEVM_deploying_SmartContracts.md
   - Solidity Tutorial (Part 1): solidity_tutorial_basics_part_1.md
   - Solidity Tutorial (Part 2): solidity_tutorial_basics_part_2.md
+  - Solidity Tutorial (Part 3): solidity_tutorial_basics_part_3.md
+  
 
 theme:
   name: material
