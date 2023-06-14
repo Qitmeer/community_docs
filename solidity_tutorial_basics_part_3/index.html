@@ -9,13 +9,15 @@
       
       
       
+        <link rel="prev" href="../solidity_tutorial_basics_part_2/">
+      
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.15">
     
     
       
-        <title>Solidity Tutorial - Basics (Part 3) - Qitmeer Community Documents</title>
+        <title>Solidity Tutorial (Part 3) - Qitmeer Community Documents</title>
       
     
     
@@ -92,7 +94,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Solidity Tutorial - Basics (Part 3)
+              Solidity Tutorial (Part 3)
             
           </span>
         </div>
@@ -284,6 +286,124 @@
   
 
     
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Solidity Tutorial (Part 3)
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Solidity Tutorial (Part 3)
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#functions" class="md-nav__link">
+    Functions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#function-visibility" class="md-nav__link">
+    Function Visibility
+  </a>
+  
+    <nav class="md-nav" aria-label="Function Visibility">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#public" class="md-nav__link">
+    Public
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#private" class="md-nav__link">
+    Private
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal" class="md-nav__link">
+    Internal
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#external" class="md-nav__link">
+    External
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#state-mutability" class="md-nav__link">
+    State Mutability
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#return-statement" class="md-nav__link">
+    Return Statement
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modifiers" class="md-nav__link">
+    Modifiers
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -423,12 +543,12 @@
 </span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
 </span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="c1">// We create a public function that returns a string</span>
 </span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="kt">function</span><span class="w"> </span><span class="nv">publicFunction</span><span class="p">()</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span>view<span class="w"> </span><span class="kt">returns</span><span class="w"> </span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="nv">memory</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">        </span><span class="kt">return</span><span class="w"> </span>publicString<span class="p">;</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span><span class="kt">return</span><span class="w"> </span>publicString<span class="p">;</span>
 </span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="p">}</span>
 </span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>
 </span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="c1">// functions inside of our contract can call this public function</span>
 </span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="kt">function</span><span class="w"> </span><span class="nv">functionOne</span><span class="p">()</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span>view<span class="w"> </span><span class="kt">returns</span><span class="w"> </span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="nv">memory</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">        </span><span class="kt">return</span><span class="w"> </span>publicFunction<span class="p">();</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">    </span><span class="kt">return</span><span class="w"> </span>publicFunction<span class="p">();</span>
 </span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="p">}</span>
 </span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>
 </span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="p">}</span>
@@ -438,7 +558,7 @@
 </span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>
 </span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="c1">// functions inherited from another contract can also call this function</span>
 </span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="kt">function</span><span class="w"> </span><span class="nv">functionTwo</span><span class="p">()</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span>view<span class="w"> </span><span class="kt">returns</span><span class="w"> </span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="nv">memory</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="w">        </span><span class="kt">return</span><span class="w"> </span>publicFunction<span class="p">();</span>
+</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="w">    </span><span class="kt">return</span><span class="w"> </span>publicFunction<span class="p">();</span>
 </span><span id="__span-1-24"><a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="p">}</span>
 </span><span id="__span-1-25"><a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a>
 </span><span id="__span-1-26"><a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="p">}</span>
@@ -447,17 +567,17 @@
 <div class="language-solidity highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1">// We first need to declare an interface to interact with another contract</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>interface<span class="w"> </span>ParentInterface<span class="w"> </span><span class="p">{</span>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">        </span><span class="c1">// functions must be declared as external in the interface even if they are public in the contract they are being called from</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="c1">// functions must be declared as external in the interface even if they are public in the contract they are being called from</span>
 </span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">publicFunction</span><span class="p">()</span><span class="w"> </span><span class="kt">external</span><span class="w"> </span>view<span class="w"> </span><span class="kt">returns</span><span class="w"> </span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="nv">memory</span><span class="p">);</span>
 </span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="p">}</span>
 </span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>
 </span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="k">contract</span><span class="w"> </span><span class="ni">AnotherContract</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>
-</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">        </span><span class="c1">// address 0xf8e81D47203A594245E36C48e151709F0C19fBe8 is where our Parent contract is stored (for example sake)</span>
-</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">        </span><span class="kt">address</span><span class="w"> </span><span class="nv">parentAddress</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0xf8e81D47203A594245E36C48e151709F0C19fBe8</span><span class="p">;</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">    </span><span class="c1">// address 0xf8e81D47203A594245E36C48e151709F0C19fBe8 is where our Parent contract is stored (for example sake)</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">    </span><span class="kt">address</span><span class="w"> </span><span class="nv">parentAddress</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0xf8e81D47203A594245E36C48e151709F0C19fBe8</span><span class="p">;</span>
 </span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>
 </span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">functionTwo</span><span class="p">()</span><span class="w"> </span><span class="kt">external</span><span class="w"> </span>view<span class="w"> </span><span class="kt">returns</span><span class="w"> </span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="nv">memory</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">            </span><span class="kt">return</span><span class="w"> </span>ParentInterface<span class="p">(</span>parentAddress<span class="p">).</span>publicFunction<span class="p">();</span>
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">        </span><span class="kt">return</span><span class="w"> </span>ParentInterface<span class="p">(</span>parentAddress<span class="p">).</span>publicFunction<span class="p">();</span>
 </span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">    </span><span class="p">}</span>
 </span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="p">}</span>
 </span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>
@@ -471,12 +591,12 @@
 </span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="kt">string</span><span class="w"> </span><span class="k">private </span><span class="nv">privateString</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;This is a private function!&quot;</span><span class="p">;</span>
 </span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>
 </span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="kt">function</span><span class="w"> </span><span class="nv">privateFunction</span><span class="p">()</span><span class="w"> </span><span class="kt">private</span><span class="w"> </span>view<span class="w"> </span><span class="kt">returns</span><span class="w"> </span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="nv">memory</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">        </span><span class="kt">return</span><span class="w"> </span>privateString<span class="p">;</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">    </span><span class="kt">return</span><span class="w"> </span>privateString<span class="p">;</span>
 </span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="p">}</span>
 </span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>
 </span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="c1">// This function will be able to call privateFunction()</span>
 </span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="kt">function</span><span class="w"> </span><span class="nv">functionOne</span><span class="p">()</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span>view<span class="w"> </span><span class="kt">returns</span><span class="w"> </span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="nv">memory</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">        </span><span class="kt">return</span><span class="w"> </span>privateFunction<span class="p">();</span>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">    </span><span class="kt">return</span><span class="w"> </span>privateFunction<span class="p">();</span>
 </span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="p">}</span>
 </span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="p">}</span>
 </span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>
@@ -485,7 +605,7 @@
 </span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>
 </span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="c1">// This function will not be able to call privateFunction() and produce an error</span>
 </span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="kt">function</span><span class="w"> </span><span class="nv">functionTwo</span><span class="p">()</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span>view<span class="w"> </span><span class="kt">returns</span><span class="w"> </span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="nv">memory</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="w">        </span><span class="kt">return</span><span class="w"> </span>privateFunction<span class="p">();</span><span class="w"> </span><span class="c1">// &lt;= error produced here</span>
+</span><span id="__span-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="w">    </span><span class="kt">return</span><span class="w"> </span>privateFunction<span class="p">();</span><span class="w"> </span><span class="c1">// &lt;= error produced here</span>
 </span><span id="__span-3-22"><a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="p">}</span>
 </span><span id="__span-3-23"><a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="p">}</span>
 </span></code></pre></div>
@@ -497,12 +617,12 @@
 </span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="kt">string</span><span class="w"> </span><span class="k">internal </span><span class="nv">internalString</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;This is a internal function!&quot;</span><span class="p">;</span>
 </span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>
 </span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="kt">function</span><span class="w"> </span><span class="nv">internalFunction</span><span class="p">()</span><span class="w"> </span><span class="kt">internal</span><span class="w"> </span>view<span class="w"> </span><span class="kt">returns</span><span class="w"> </span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="nv">memory</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">        </span><span class="kt">return</span><span class="w"> </span>internalString<span class="p">;</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">    </span><span class="kt">return</span><span class="w"> </span>internalString<span class="p">;</span>
 </span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="p">}</span>
 </span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>
 </span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="c1">// This will work</span>
 </span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="kt">function</span><span class="w"> </span><span class="nv">functionOne</span><span class="p">()</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span>view<span class="w"> </span><span class="kt">returns</span><span class="w"> </span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="nv">memory</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">        </span><span class="kt">return</span><span class="w"> </span>internalFunction<span class="p">();</span>
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">    </span><span class="kt">return</span><span class="w"> </span>internalFunction<span class="p">();</span>
 </span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="p">}</span>
 </span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="p">}</span>
 </span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>
@@ -511,7 +631,7 @@
 </span><span id="__span-4-18"><a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a>
 </span><span id="__span-4-19"><a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="c1">// This will also work</span>
 </span><span id="__span-4-20"><a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="kt">function</span><span class="w"> </span><span class="nv">functionTwo</span><span class="p">()</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span>view<span class="w"> </span><span class="kt">returns</span><span class="w"> </span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="nv">memory</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-4-21"><a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="w">        </span><span class="kt">return</span><span class="w"> </span>internalFunction<span class="p">();</span><span class="w"> </span>
+</span><span id="__span-4-21"><a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="w">    </span><span class="kt">return</span><span class="w"> </span>internalFunction<span class="p">();</span><span class="w"> </span>
 </span><span id="__span-4-22"><a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a><span class="p">}</span>
 </span><span id="__span-4-23"><a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a><span class="p">}</span>
 </span></code></pre></div>
@@ -523,12 +643,12 @@
 </span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="kt">string</span><span class="w"> </span><span class="nv">externalString</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;This is an external function!&quot;</span><span class="p">;</span>
 </span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>
 </span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="kt">function</span><span class="w"> </span><span class="nv">externalFunction</span><span class="p">()</span><span class="w"> </span><span class="kt">external</span><span class="w"> </span>view<span class="w"> </span><span class="kt">returns</span><span class="w"> </span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="nv">memory</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">        </span><span class="kt">return</span><span class="w"> </span>externalString<span class="p">;</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">    </span><span class="kt">return</span><span class="w"> </span>externalString<span class="p">;</span>
 </span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="p">}</span>
 </span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>
 </span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="c1">// This will not work</span>
 </span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="kt">function</span><span class="w"> </span><span class="nv">functionOne</span><span class="p">()</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span>view<span class="w"> </span><span class="kt">returns</span><span class="w"> </span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="nv">memory</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="w">        </span><span class="kt">return</span><span class="w"> </span>externalFunction<span class="p">();</span>
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="w">    </span><span class="kt">return</span><span class="w"> </span>externalFunction<span class="p">();</span>
 </span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="p">}</span>
 </span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="p">}</span>
 </span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>
@@ -537,7 +657,7 @@
 </span><span id="__span-5-18"><a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a>
 </span><span id="__span-5-19"><a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="c1">// This will NOT work</span>
 </span><span id="__span-5-20"><a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a><span class="kt">function</span><span class="w"> </span><span class="nv">functionTwo</span><span class="p">()</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span>view<span class="w"> </span><span class="kt">returns</span><span class="w"> </span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="nv">memory</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-5-21"><a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a><span class="w">        </span><span class="kt">return</span><span class="w"> </span>externalFunction<span class="p">();</span><span class="w"> </span>
+</span><span id="__span-5-21"><a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a><span class="w">    </span><span class="kt">return</span><span class="w"> </span>externalFunction<span class="p">();</span><span class="w"> </span>
 </span><span id="__span-5-22"><a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a><span class="p">}</span>
 </span><span id="__span-5-23"><a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a><span class="p">}</span>
 </span></code></pre></div>
@@ -551,8 +671,8 @@
 </span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
 </span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="c1">// we first use the returns key word and specify the type (in this case its uint)</span>
 </span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="kt">function</span><span class="w"> </span><span class="nv">retrieveNumber</span><span class="p">()</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span>view<span class="w"> </span><span class="kt">returns</span><span class="w"> </span><span class="p">(</span><span class="kt">uint</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">        </span><span class="c1">// add the return keyword before the value you want to return</span>
-</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">        </span><span class="kt">return</span><span class="w"> </span>number<span class="p">;</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">    </span><span class="c1">// add the return keyword before the value you want to return</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">    </span><span class="kt">return</span><span class="w"> </span>number<span class="p">;</span>
 </span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="p">}</span>
 </span></code></pre></div>
 <p>If you want to return something that is of reference type (e.g. array, string), then you must also specify the data location (most of the times this will be <code>memory</code> ): </p>
@@ -560,7 +680,7 @@
 </span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
 </span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="c1">// The memory keyword must be used here as string is a reference type</span>
 </span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="kt">function</span><span class="w"> </span><span class="nv">retrieveString</span><span class="p">()</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span>view<span class="w"> </span><span class="kt">returns</span><span class="w"> </span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="nv">memory</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">        </span><span class="kt">return</span><span class="w"> </span>myString<span class="p">;</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">    </span><span class="kt">return</span><span class="w"> </span>myString<span class="p">;</span>
 </span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="p">}</span>
 </span></code></pre></div>
 <p>If we want to return multiple values, we need to also include their type into the function declaration: </p>
@@ -568,21 +688,21 @@
 </span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="kt">string</span><span class="w"> </span><span class="nv">numAsString</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Ten&quot;</span><span class="p">;</span>
 </span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
 </span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="kt">function</span><span class="w"> </span><span class="nv">retrieveNumber</span><span class="p">()</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span>view<span class="w"> </span><span class="kt">returns</span><span class="w"> </span><span class="p">(</span><span class="kt">uint</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="nv">memory</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">        </span><span class="c1">// We add brackets which will return a tuple of our values</span>
-</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="w">        </span><span class="kt">return</span><span class="w"> </span><span class="p">(</span>number<span class="p">,</span><span class="w"> </span>numAsString<span class="p">);</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">    </span><span class="c1">// We add brackets which will return a tuple of our values</span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="w">    </span><span class="kt">return</span><span class="w"> </span><span class="p">(</span>number<span class="p">,</span><span class="w"> </span>numAsString<span class="p">);</span>
 </span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="p">}</span>
 </span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>
 </span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="c1">// We can retrieve our values from our function like this</span>
 </span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="kt">function</span><span class="w"> </span><span class="nv">exampleOne</span><span class="p">()</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span>view<span class="w"> </span><span class="p">{</span>
-</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="w">        </span><span class="p">(</span><span class="kt">uint</span><span class="w"> </span><span class="nv">a</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="nv">memory</span><span class="w"> </span>b<span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>retrieveNumber<span class="p">();</span>
+</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="w">    </span><span class="p">(</span><span class="kt">uint</span><span class="w"> </span><span class="nv">a</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="nv">memory</span><span class="w"> </span>b<span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>retrieveNumber<span class="p">();</span>
 </span><span id="__span-8-12"><a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="p">}</span>
 </span><span id="__span-8-13"><a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a>
 </span><span id="__span-8-14"><a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a><span class="c1">// or like this</span>
 </span><span id="__span-8-15"><a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a><span class="kt">function</span><span class="w"> </span><span class="nv">exampleTwo</span><span class="p">()</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span>view<span class="w"> </span><span class="p">{</span>
-</span><span id="__span-8-16"><a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a><span class="w">        </span><span class="kt">uint</span><span class="w"> </span><span class="nv">a</span><span class="p">;</span>
-</span><span id="__span-8-17"><a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a><span class="w">        </span><span class="kt">string</span><span class="w"> </span><span class="nv">memory</span><span class="w"> </span>b<span class="p">;</span>
+</span><span id="__span-8-16"><a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a><span class="w">    </span><span class="kt">uint</span><span class="w"> </span><span class="nv">a</span><span class="p">;</span>
+</span><span id="__span-8-17"><a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a><span class="w">    </span><span class="kt">string</span><span class="w"> </span><span class="nv">memory</span><span class="w"> </span>b<span class="p">;</span>
 </span><span id="__span-8-18"><a id="__codelineno-8-18" name="__codelineno-8-18" href="#__codelineno-8-18"></a>
-</span><span id="__span-8-19"><a id="__codelineno-8-19" name="__codelineno-8-19" href="#__codelineno-8-19"></a><span class="w">        </span><span class="p">(</span>a<span class="p">,</span>b<span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>retrieve<span class="p">();</span>
+</span><span id="__span-8-19"><a id="__codelineno-8-19" name="__codelineno-8-19" href="#__codelineno-8-19"></a><span class="w">    </span><span class="p">(</span>a<span class="p">,</span>b<span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>retrieve<span class="p">();</span>
 </span><span id="__span-8-20"><a id="__codelineno-8-20" name="__codelineno-8-20" href="#__codelineno-8-20"></a><span class="p">}</span>
 </span></code></pre></div>
 <h2 id="modifiers">Modifiers</h2>
@@ -592,14 +712,14 @@
 </span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
 </span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="c1">// We create a modifier that will only allow the specified address to call a function</span>
 </span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="kt">modifier</span><span class="w"> </span>onlyOwner<span class="p">()</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">        </span><span class="kt">require</span><span class="p">(</span><span class="k">msg.sender</span><span class="w"> </span><span class="o">==</span><span class="w"> </span>owner<span class="p">,</span><span class="w"> </span><span class="s2">&quot;Permission Denied - Not the Owner!&quot;</span><span class="p">);</span>
-</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">        </span><span class="c1">// The &quot;_;&quot; is a special syntax that determines when you want the modifier to execute</span>
-</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="w">      </span>_<span class="p">;</span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">    </span><span class="kt">require</span><span class="p">(</span><span class="k">msg.sender</span><span class="w"> </span><span class="o">==</span><span class="w"> </span>owner<span class="p">,</span><span class="w"> </span><span class="s2">&quot;Permission Denied - Not the Owner!&quot;</span><span class="p">);</span>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">    </span><span class="c1">// The &quot;_;&quot; is a special syntax that determines when you want the modifier to execute</span>
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="w">    </span>_<span class="p">;</span>
 </span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="p">}</span>
 </span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>
 </span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="c1">// We append the onlyOwner modifier to our function which will be executed first before storeNumber</span>
 </span><span id="__span-9-12"><a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="kt">function</span><span class="w"> </span><span class="nv">storeNumber</span><span class="p">(</span><span class="kt">uint</span><span class="w"> </span><span class="nv">num</span><span class="p">)</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span>onlyOwner<span class="w"> </span><span class="p">{</span>
-</span><span id="__span-9-13"><a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="w">        </span>number<span class="w"> </span><span class="o">=</span><span class="w"> </span>num<span class="p">;</span>
+</span><span id="__span-9-13"><a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="w">    </span>number<span class="w"> </span><span class="o">=</span><span class="w"> </span>num<span class="p">;</span>
 </span><span id="__span-9-14"><a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a><span class="p">}</span>
 </span><span id="__span-9-15"><a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a>
 </span><span id="__span-9-16"><a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a><span class="c1">// If we attempt to call the function using a different address than variable &quot;owner&quot;, it will produce an error and revert the state</span>
@@ -616,16 +736,16 @@
 </span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="kt">address</span><span class="w"> </span><span class="nv">owner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x5B38Da6a701c568545dCfcB03FcB875f56beddC4</span><span class="p">;</span>
 </span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>
 </span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="kt">modifier</span><span class="w"> </span>onlyOwner<span class="p">()</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="w">        </span><span class="c1">// This line is going to be executed first before storeNumber</span>
-</span><span id="__span-10-12"><a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="w">        </span><span class="c1">// Since the check comes first, we will not be able to call storeNumber</span>
-</span><span id="__span-10-13"><a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a><span class="w">        </span><span class="kt">require</span><span class="p">(</span><span class="k">msg.sender</span><span class="w"> </span><span class="o">==</span><span class="w"> </span>owner<span class="p">,</span><span class="w"> </span><span class="s2">&quot;Permission Denied - Not the Owner!&quot;</span><span class="p">);</span>
-</span><span id="__span-10-14"><a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="w">      </span>_<span class="p">;</span>
+</span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="w">    </span><span class="c1">// This line is going to be executed first before storeNumber</span>
+</span><span id="__span-10-12"><a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="w">    </span><span class="c1">// Since the check comes first, we will not be able to call storeNumber</span>
+</span><span id="__span-10-13"><a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a><span class="w">    </span><span class="kt">require</span><span class="p">(</span><span class="k">msg.sender</span><span class="w"> </span><span class="o">==</span><span class="w"> </span>owner<span class="p">,</span><span class="w"> </span><span class="s2">&quot;Permission Denied - Not the Owner!&quot;</span><span class="p">);</span>
+</span><span id="__span-10-14"><a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="w">    </span>_<span class="p">;</span>
 </span><span id="__span-10-15"><a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a><span class="p">}</span>
 </span><span id="__span-10-16"><a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a>
 </span><span id="__span-10-17"><a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a><span class="kt">function</span><span class="w"> </span><span class="nv">storeNumber</span><span class="p">(</span><span class="kt">uint</span><span class="w"> </span><span class="nv">num</span><span class="p">)</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span>onlyOwner<span class="w"> </span><span class="p">{</span>
-</span><span id="__span-10-18"><a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a><span class="w">        </span>number<span class="w"> </span><span class="o">=</span><span class="w"> </span>num<span class="p">;</span>
-</span><span id="__span-10-19"><a id="__codelineno-10-19" name="__codelineno-10-19" href="#__codelineno-10-19"></a><span class="w">        </span><span class="c1">// Lets change the address of the owner</span>
-</span><span id="__span-10-20"><a id="__codelineno-10-20" name="__codelineno-10-20" href="#__codelineno-10-20"></a><span class="w">        </span>owner<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2</span>
+</span><span id="__span-10-18"><a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a><span class="w">    </span>number<span class="w"> </span><span class="o">=</span><span class="w"> </span>num<span class="p">;</span>
+</span><span id="__span-10-19"><a id="__codelineno-10-19" name="__codelineno-10-19" href="#__codelineno-10-19"></a><span class="w">    </span><span class="c1">// Lets change the address of the owner</span>
+</span><span id="__span-10-20"><a id="__codelineno-10-20" name="__codelineno-10-20" href="#__codelineno-10-20"></a><span class="w">    </span>owner<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2</span>
 </span><span id="__span-10-21"><a id="__codelineno-10-21" name="__codelineno-10-21" href="#__codelineno-10-21"></a><span class="p">}</span>
 </span><span id="__span-10-22"><a id="__codelineno-10-22" name="__codelineno-10-22" href="#__codelineno-10-22"></a>
 </span><span id="__span-10-23"><a id="__codelineno-10-23" name="__codelineno-10-23" href="#__codelineno-10-23"></a><span class="c1">// In this case we will not be able to call storeNumber as the require statment is executed first before we can change the owner variable</span>
@@ -638,14 +758,14 @@
 </span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="kt">address</span><span class="w"> </span><span class="nv">owner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x5B38Da6a701c568545dCfcB03FcB875f56beddC4</span><span class="p">;</span>
 </span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>
 </span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="kt">modifier</span><span class="w"> </span>onlyOwner<span class="p">()</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="w">        </span><span class="c1">// we can now change the address of the owner before the require statement</span>
-</span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="w">        </span>_<span class="p">;</span>
-</span><span id="__span-11-11"><a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="w">        </span><span class="kt">require</span><span class="p">(</span><span class="k">msg.sender</span><span class="w"> </span><span class="o">==</span><span class="w"> </span>owner<span class="p">,</span><span class="w"> </span><span class="s2">&quot;Permission Denied - Not the Owner!&quot;</span><span class="p">);</span>
+</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="w">    </span><span class="c1">// we can now change the address of the owner before the require statement</span>
+</span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="w">    </span>_<span class="p">;</span>
+</span><span id="__span-11-11"><a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="w">    </span><span class="kt">require</span><span class="p">(</span><span class="k">msg.sender</span><span class="w"> </span><span class="o">==</span><span class="w"> </span>owner<span class="p">,</span><span class="w"> </span><span class="s2">&quot;Permission Denied - Not the Owner!&quot;</span><span class="p">);</span>
 </span><span id="__span-11-12"><a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a><span class="p">}</span>
 </span><span id="__span-11-13"><a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a>
 </span><span id="__span-11-14"><a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a><span class="kt">function</span><span class="w"> </span><span class="nv">storeNumber</span><span class="p">(</span><span class="kt">uint</span><span class="w"> </span><span class="nv">num</span><span class="p">)</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span>onlyOwner<span class="w"> </span><span class="p">{</span>
-</span><span id="__span-11-15"><a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a><span class="w">        </span>number<span class="w"> </span><span class="o">=</span><span class="w"> </span>num<span class="p">;</span>
-</span><span id="__span-11-16"><a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a><span class="w">        </span>owner<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2</span>
+</span><span id="__span-11-15"><a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a><span class="w">    </span>number<span class="w"> </span><span class="o">=</span><span class="w"> </span>num<span class="p">;</span>
+</span><span id="__span-11-16"><a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a><span class="w">    </span>owner<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2</span>
 </span><span id="__span-11-17"><a id="__codelineno-11-17" name="__codelineno-11-17" href="#__codelineno-11-17"></a><span class="p">}</span>
 </span><span id="__span-11-18"><a id="__codelineno-11-18" name="__codelineno-11-18" href="#__codelineno-11-18"></a>
 </span><span id="__span-11-19"><a id="__codelineno-11-19" name="__codelineno-11-19" href="#__codelineno-11-19"></a><span class="c1">// In this example we will now be able call storeNumber using address 0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2</span>
@@ -655,18 +775,18 @@
 </span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="kt">address</span><span class="w"> </span><span class="nv">owner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x5B38Da6a701c568545dCfcB03FcB875f56beddC4</span><span class="p">;</span>
 </span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>
 </span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="kt">modifier</span><span class="w"> </span>onlyOwner<span class="p">()</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="w">        </span><span class="kt">require</span><span class="p">(</span><span class="k">msg.sender</span><span class="w"> </span><span class="o">==</span><span class="w"> </span>owner<span class="p">,</span><span class="w"> </span><span class="s2">&quot;Permission Denied - Not the Owner!&quot;</span><span class="p">);</span>
-</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="w">        </span><span class="c1">// The &quot;_;&quot; is a special syntax that determines when you want the modifier to execute</span>
-</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="w">      </span>_<span class="p">;</span>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="w">    </span><span class="kt">require</span><span class="p">(</span><span class="k">msg.sender</span><span class="w"> </span><span class="o">==</span><span class="w"> </span>owner<span class="p">,</span><span class="w"> </span><span class="s2">&quot;Permission Denied - Not the Owner!&quot;</span><span class="p">);</span>
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="w">    </span><span class="c1">// The &quot;_;&quot; is a special syntax that determines when you want the modifier to execute</span>
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="w">    </span>_<span class="p">;</span>
 </span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="p">}</span>
 </span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>
 </span><span id="__span-12-10"><a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a><span class="kt">modifier</span><span class="w"> </span>greaterThanTen<span class="p">(</span><span class="kt">uint</span><span class="w"> </span><span class="nv">_number</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-12-11"><a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a><span class="w">        </span><span class="kt">require</span><span class="p">(</span>_number<span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m m-Decimal">10</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Number must be greater than 10!&quot;</span><span class="p">);</span>
+</span><span id="__span-12-11"><a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a><span class="w">    </span><span class="kt">require</span><span class="p">(</span>_number<span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m m-Decimal">10</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Number must be greater than 10!&quot;</span><span class="p">);</span>
 </span><span id="__span-12-12"><a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a><span class="w">    </span>_<span class="p">;</span>
 </span><span id="__span-12-13"><a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a><span class="p">}</span>
 </span><span id="__span-12-14"><a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a>
 </span><span id="__span-12-15"><a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a><span class="kt">function</span><span class="w"> </span><span class="nv">storeNumber</span><span class="p">(</span><span class="kt">uint</span><span class="w"> </span><span class="nv">num</span><span class="p">)</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span>onlyOwner<span class="w"> </span>greaterThanTen<span class="p">(</span>num<span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-12-16"><a id="__codelineno-12-16" name="__codelineno-12-16" href="#__codelineno-12-16"></a><span class="w">        </span>number<span class="w"> </span><span class="o">=</span><span class="w"> </span>num<span class="p">;</span>
+</span><span id="__span-12-16"><a id="__codelineno-12-16" name="__codelineno-12-16" href="#__codelineno-12-16"></a><span class="w">    </span>number<span class="w"> </span><span class="o">=</span><span class="w"> </span>num<span class="p">;</span>
 </span><span id="__span-12-17"><a id="__codelineno-12-17" name="__codelineno-12-17" href="#__codelineno-12-17"></a><span class="p">}</span>
 </span><span id="__span-12-18"><a id="__codelineno-12-18" name="__codelineno-12-18" href="#__codelineno-12-18"></a>
 </span><span id="__span-12-19"><a id="__codelineno-12-19" name="__codelineno-12-19" href="#__codelineno-12-19"></a><span class="c1">// calling storeNumber(5) will produce an error and revert</span>
