@@ -35,12 +35,12 @@ string public publicString = "This is a public function!";
 
 // We create a public function that returns a string
 function publicFunction() public view returns (string memory) {
-		return publicString;
+	return publicString;
 }
 
 // functions inside of our contract can call this public function
 function functionOne() public view returns (string memory) {
-		return publicFunction();
+	return publicFunction();
 }
 
 }
@@ -50,7 +50,7 @@ contract Child is Parent {
 
 // functions inherited from another contract can also call this function
 function functionTwo() public view returns (string memory) {
-		return publicFunction();
+	return publicFunction();
 }
 
 }
@@ -63,17 +63,17 @@ We can also call `publicFunction()` from within another smart contract if contra
 // We first need to declare an interface to interact with another contract
 interface ParentInterface {
 		
-		// functions must be declared as external in the interface even if they are public in the contract they are being called from
+	// functions must be declared as external in the interface even if they are public in the contract they are being called from
     function publicFunction() external view returns (string memory);
 }
 
 contract AnotherContract {
 
-		// address 0xf8e81D47203A594245E36C48e151709F0C19fBe8 is where our Parent contract is stored (for example sake)
-		address parentAddress = 0xf8e81D47203A594245E36C48e151709F0C19fBe8;
+	// address 0xf8e81D47203A594245E36C48e151709F0C19fBe8 is where our Parent contract is stored (for example sake)
+	address parentAddress = 0xf8e81D47203A594245E36C48e151709F0C19fBe8;
 
     function functionTwo() external view returns (string memory) {
-		    return ParentInterface(parentAddress).publicFunction();
+		return ParentInterface(parentAddress).publicFunction();
     }
 }
 
@@ -91,12 +91,12 @@ contract Parent {
 string private privateString = "This is a private function!";
 
 function privateFunction() private view returns (string memory) {
-		return privateString;
+	return privateString;
 }
 
 // This function will be able to call privateFunction()
 function functionOne() public view returns (string memory) {
-		return privateFunction();
+	return privateFunction();
 }
 }
 
@@ -105,7 +105,7 @@ contract Child is Parent {
 
 // This function will not be able to call privateFunction() and produce an error
 function functionTwo() public view returns (string memory) {
-		return privateFunction(); // <= error produced here
+	return privateFunction(); // <= error produced here
 }
 }
 ```
@@ -121,12 +121,12 @@ contract Parent {
 string internal internalString = "This is a internal function!";
 
 function internalFunction() internal view returns (string memory) {
-		return internalString;
+	return internalString;
 }
 
 // This will work
 function functionOne() public view returns (string memory) {
-		return internalFunction();
+	return internalFunction();
 }
 }
 
@@ -135,7 +135,7 @@ contract Child is Parent {
 
 // This will also work
 function functionTwo() public view returns (string memory) {
-		return internalFunction(); 
+	return internalFunction(); 
 }
 }
 ```
@@ -151,12 +151,12 @@ contract Parent {
 string externalString = "This is an external function!";
 
 function externalFunction() external view returns (string memory) {
-		return externalString;
+	return externalString;
 }
 
 // This will not work
 function functionOne() public view returns (string memory) {
-		return externalFunction();
+	return externalFunction();
 }
 }
 
@@ -165,7 +165,7 @@ contract Child is Parent {
 
 // This will NOT work
 function functionTwo() public view returns (string memory) {
-		return externalFunction(); 
+	return externalFunction(); 
 }
 }
 ```
@@ -187,8 +187,8 @@ uint number = 10;
 
 // we first use the returns key word and specify the type (in this case its uint)
 function retrieveNumber() public view returns (uint) {
-		// add the return keyword before the value you want to return
-		return number;
+	// add the return keyword before the value you want to return
+	return number;
 }
 ```
 
@@ -199,7 +199,7 @@ string myString = "Hello World!";
 
 // The memory keyword must be used here as string is a reference type
 function retrieveString() public view returns (string memory) {
-		return myString;
+	return myString;
 }
 ```
 
@@ -210,21 +210,21 @@ uint number = 10;
 string numAsString = "Ten";
 
 function retrieveNumber() public view returns (uint, string memory) {
-		// We add brackets which will return a tuple of our values
-		return (number, numAsString);
+	// We add brackets which will return a tuple of our values
+	return (number, numAsString);
 }
 
 // We can retrieve our values from our function like this
 function exampleOne() public view {
-		(uint a, string memory b) = retrieveNumber();
+	(uint a, string memory b) = retrieveNumber();
 }
 
 // or like this
 function exampleTwo() public view {
-		uint a;
-		string memory b;
+	uint a;
+	string memory b;
 
-		(a,b) = retrieve();
+	(a,b) = retrieve();
 }
 ```
 
@@ -238,14 +238,14 @@ address owner = 0x5B38Da6a701c568545dCfcB03FcB875f56beddC4;
 
 // We create a modifier that will only allow the specified address to call a function
 modifier onlyOwner() {
-		require(msg.sender == owner, "Permission Denied - Not the Owner!");
-		// The "_;" is a special syntax that determines when you want the modifier to execute
-	  _;
+	require(msg.sender == owner, "Permission Denied - Not the Owner!");
+	// The "_;" is a special syntax that determines when you want the modifier to execute
+	_;
 }
 
 // We append the onlyOwner modifier to our function which will be executed first before storeNumber
 function storeNumber(uint num) public onlyOwner {
-		number = num;
+	number = num;
 }
 
 // If we attempt to call the function using a different address than variable "owner", it will produce an error and revert the state
@@ -267,16 +267,16 @@ uint256 number;
 address owner = 0x5B38Da6a701c568545dCfcB03FcB875f56beddC4;
 
 modifier onlyOwner() {
-		// This line is going to be executed first before storeNumber
-		// Since the check comes first, we will not be able to call storeNumber
-		require(msg.sender == owner, "Permission Denied - Not the Owner!");
-	  _;
+	// This line is going to be executed first before storeNumber
+	// Since the check comes first, we will not be able to call storeNumber
+	require(msg.sender == owner, "Permission Denied - Not the Owner!");
+	_;
 }
 
 function storeNumber(uint num) public onlyOwner {
-		number = num;
-		// Lets change the address of the owner
-		owner = 0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2
+	number = num;
+	// Lets change the address of the owner
+	owner = 0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2
 }
 
 // In this case we will not be able to call storeNumber as the require statment is executed first before we can change the owner variable
@@ -291,14 +291,14 @@ uint256 number;
 address owner = 0x5B38Da6a701c568545dCfcB03FcB875f56beddC4;
 
 modifier onlyOwner() {
-		// we can now change the address of the owner before the require statement
-		_;
-		require(msg.sender == owner, "Permission Denied - Not the Owner!");
+	// we can now change the address of the owner before the require statement
+	_;
+	require(msg.sender == owner, "Permission Denied - Not the Owner!");
 }
 
 function storeNumber(uint num) public onlyOwner {
-		number = num;
-		owner = 0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2
+	number = num;
+	owner = 0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2
 }
 
 // In this example we will now be able call storeNumber using address 0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2
@@ -311,18 +311,18 @@ uint256 number;
 address owner = 0x5B38Da6a701c568545dCfcB03FcB875f56beddC4;
 
 modifier onlyOwner() {
-		require(msg.sender == owner, "Permission Denied - Not the Owner!");
-		// The "_;" is a special syntax that determines when you want the modifier to execute
-	  _;
+	require(msg.sender == owner, "Permission Denied - Not the Owner!");
+	// The "_;" is a special syntax that determines when you want the modifier to execute
+	_;
 }
 
 modifier greaterThanTen(uint _number) {
-		require(_number > 10, "Number must be greater than 10!");
+	require(_number > 10, "Number must be greater than 10!");
     _;
 }
 
 function storeNumber(uint num) public onlyOwner greaterThanTen(num) {
-		number = num;
+	number = num;
 }
 
 // calling storeNumber(5) will produce an error and revert
