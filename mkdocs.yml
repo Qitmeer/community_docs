@@ -19,6 +19,8 @@ theme:
     repo: fontawesome/brands/github
   features:
     - navigation.footer
+  palette:
+    primary: green
   
 
 extra: 
