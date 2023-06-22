@@ -3,6 +3,22 @@ The Qitmeer community offers documentation and tutorials on Qitmeer, which is ma
 
 Qitmeer is a blockDAG-based public blockchain infrastructure built on PoW. It features a UTXO-based account system and also supports a compatible EVM for the deployment of smart contracts. Qitmeer has a roadmap to support L2 ZK-rollups and other consensus algorithms in the future.
 
+:fontawesome-brands-youtube:{ style="color: #EE0F0F" }
+__[Qitmeer Technical Summary]__ – :octicons-clock-24:
+5m – A brief technical summary of the Qitmeer architecture, its advantages over traditional blockchain networks and an overview Qitmeer's EVM compatible layer: QNG.
+
+  [Qitmeer Technical Summary]: https://www.youtube.com/watch?v=4ywA7ROgTas
+
+
+---
+
+For any questions or news regarding Qitmeer, join our UK Developer Telegram Group:
+
+:fontawesome-brands-telegram:{ style="color: #0088cc" }[ **Meer Labs (UK Developer)** ](https://t.me/+L5nExcssmOxjZTc0)
+
+---
+
+
 ## Name Conventions
 
 Name conventions used in the Qitmeer blockchain system and networks are as follows:
