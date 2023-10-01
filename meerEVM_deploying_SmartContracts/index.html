@@ -1,0 +1,920 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../Installation_Running_qng_node/">
+      
+      
+        <link rel="next" href="../solidity_tutorial_basics_part_1/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.2">
+    
+    
+      
+        <title>QNG - EVM & Deploying Smart Contracts - Qitmeer/ Meerlabs Community Documents</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.d451bc0e.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.a5377069.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="green" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#qng-evm-deploying-smart-contracts" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Qitmeer/ Meerlabs Community Documents" class="md-header__button md-logo" aria-label="Qitmeer/ Meerlabs Community Documents" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Qitmeer/ Meerlabs Community Documents
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              QNG - EVM & Deploying Smart Contracts
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Qitmeer/community_docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Qitmeer/community_docs
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Qitmeer/ Meerlabs Community Documents" class="md-nav__button md-logo" aria-label="Qitmeer/ Meerlabs Community Documents" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Qitmeer/ Meerlabs Community Documents
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Qitmeer/community_docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Qitmeer/community_docs
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../What_is_BlockDAG/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About BlockDAG
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Installation_Running_qng_node/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Running Qitmeer Node
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    QNG - EVM & Deploying Smart Contracts
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    QNG - EVM & Deploying Smart Contracts
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#qng-setting-up-node" class="md-nav__link">
+    QNG - setting up node
+  </a>
+  
+    <nav class="md-nav" aria-label="QNG - setting up node">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#http" class="md-nav__link">
+    HTTP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#websocket" class="md-nav__link">
+    WebSocket
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clish" class="md-nav__link">
+    cli.sh
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cross-chain-exchange-qitmeer-qng" class="md-nav__link">
+    Cross-chain Exchange (Qitmeer -&gt; QNG)
+  </a>
+  
+    <nav class="md-nav" aria-label="Cross-chain Exchange (Qitmeer -> QNG)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#method-1-using-kahf-wallet" class="md-nav__link">
+    Method 1: Using KAHF Wallet
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-qng-to-metamask" class="md-nav__link">
+    Add QNG to Metamask
+  </a>
+  
+    <nav class="md-nav" aria-label="Add QNG to Metamask">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#method-1-use-public-rpc-node-easier-option" class="md-nav__link">
+    Method 1: use public RPC node (easier option)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#method-2-use-own-rpc-node" class="md-nav__link">
+    Method 2: use own RPC node
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deploy-smart-contract-on-qng" class="md-nav__link">
+    Deploy Smart Contract on QNG
+  </a>
+  
+    <nav class="md-nav" aria-label="Deploy Smart Contract on QNG">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#connect-metamask-to-remix-ide" class="md-nav__link">
+    Connect Metamask to Remix IDE
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../solidity_tutorial_basics_part_1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Solidity Tutorial (Part 1)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../solidity_tutorial_basics_part_2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Solidity Tutorial (Part 2)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../solidity_tutorial_basics_part_3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Solidity Tutorial (Part 3)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#qng-setting-up-node" class="md-nav__link">
+    QNG - setting up node
+  </a>
+  
+    <nav class="md-nav" aria-label="QNG - setting up node">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#http" class="md-nav__link">
+    HTTP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#websocket" class="md-nav__link">
+    WebSocket
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clish" class="md-nav__link">
+    cli.sh
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cross-chain-exchange-qitmeer-qng" class="md-nav__link">
+    Cross-chain Exchange (Qitmeer -&gt; QNG)
+  </a>
+  
+    <nav class="md-nav" aria-label="Cross-chain Exchange (Qitmeer -> QNG)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#method-1-using-kahf-wallet" class="md-nav__link">
+    Method 1: Using KAHF Wallet
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-qng-to-metamask" class="md-nav__link">
+    Add QNG to Metamask
+  </a>
+  
+    <nav class="md-nav" aria-label="Add QNG to Metamask">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#method-1-use-public-rpc-node-easier-option" class="md-nav__link">
+    Method 1: use public RPC node (easier option)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#method-2-use-own-rpc-node" class="md-nav__link">
+    Method 2: use own RPC node
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deploy-smart-contract-on-qng" class="md-nav__link">
+    Deploy Smart Contract on QNG
+  </a>
+  
+    <nav class="md-nav" aria-label="Deploy Smart Contract on QNG">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#connect-metamask-to-remix-ide" class="md-nav__link">
+    Connect Metamask to Remix IDE
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="qng-evm-deploying-smart-contracts">QNG - EVM &amp; Deploying Smart Contracts</h1>
+<h2 id="qng-setting-up-node">QNG - setting up node</h2>
+<p>To interact with the QNG (testnet), you would need to configure your Qitmeer node by including both the <code>--testnet</code> and <code>--evmenv</code> flag and specifying the necessary parameters before starting the node.</p>
+<p>Interacting with QNG requires the client sending a series of JSON-RPC API methods to the node which can only be done by enabling a server on the node to accept JSON-RPC requests. </p>
+<p>Currently you can use the API via RPC through these protocols:
+- <strong>HTTP</strong>
+- <strong>WebSocket</strong></p>
+<h3 id="http">HTTP</h3>
+<p>To enable the HTTP server, you would need to insert the <code>--http</code> parameter inside of <code>--evmenv</code> flag: </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>&gt;<span class="w"> </span>./qng<span class="w"> </span>--testnet<span class="w"> </span>--evmenv<span class="o">=</span><span class="s2">&quot;--http&quot;</span>
+</span></code></pre></div>
+<blockquote>
+<p>By default, the port number should be set to <strong>18535</strong> but this can be altered by modifying <code>--http.port=&lt;port-number&gt;</code>. For example, if you want to set the port number to 12345, then you would need to input the command: <code>./qng --testnet --evmenv="--http --http.port=1234"</code></p>
+</blockquote>
+<p>You can also specify the JSON-RPC API that you would like to use through the <code>--http.api</code> parameter: </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>&gt;<span class="w"> </span>./qng<span class="w"> </span>--testnet<span class="w"> </span>--evmenv<span class="o">=</span><span class="s2">&quot;--http --http.api=eth,net,rpc,web3,personal,debug&quot;</span>
+</span></code></pre></div>
+<blockquote>
+<p>By default, only <code>eth</code>, <code>net</code>, <code>rpc</code> and <code>web3</code> API methods are provided if <code>--http.api</code> is not explicitly specified</p>
+</blockquote>
+<h3 id="websocket">WebSocket</h3>
+<p>To enable the WebSockets, you would need to insert the <code>--ws</code> parameter inside of <code>--evmenv</code> flag:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>&gt;<span class="w"> </span>./qng<span class="w"> </span>--testnet<span class="w"> </span>--evmenv<span class="o">=</span><span class="s2">&quot;--ws&quot;</span>
+</span></code></pre></div>
+<blockquote>
+<p>Again, similar to HTTP, the port number by default is set to <strong>18536</strong>. This can be altered by <code>--ws.port=&lt;port-number&gt;</code>. For example, if you want to set the port number to 12345, then you would need to input the command: <code>./qng --testnet --evmenv="--ws --ws.port=12345"</code></p>
+</blockquote>
+<h2 id="clish"><em>cli.sh</em></h2>
+<p><em>cli.sh</em> is a bash script that will allow you to run JSON-RPC methods on the Qitmeer UTXO network (<strong>not QNG</strong>).</p>
+<p>Before the running the script you must set the corresponding variables to match the settings of the Qitmeer UTXO RPC server running on the node:</p>
+<ul>
+<li><code>$host</code> - IP address of host (default: <strong>127.0.0.1</strong>)</li>
+<li><code>$port</code> - port number (default: <strong>1234</strong>)</li>
+<li><code>$user</code> - username for RPC server (default: "<strong>test</strong>") </li>
+<li><code>$pass</code> - password for RPC server (default: "<strong>test</strong>")</li>
+</ul>
+<blockquote>
+<p>The port number for the Qitmeer RPC server is by default, set to <strong>18131</strong> unless changed otherwise. </p>
+<p>Again, the configuration settings must match the RPC server for the Qitmeer network and not QNG or what has been entered in the <code>--evmenv</code> flag.</p>
+</blockquote>
+<p>If the default values do not correspond to those set on the node, then, they must be changed. You can alter the settings by issuing the following command:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">host</span><span class="o">=</span>&lt;host-IP&gt;<span class="w"> </span><span class="nv">port</span><span class="o">=</span>&lt;port-number&gt;<span class="w"> </span><span class="nv">user</span><span class="o">=</span>&lt;username&gt;<span class="w"> </span><span class="nv">pass</span><span class="o">=</span>&lt;password&gt;
+</span></code></pre></div>
+<p>It may be easier for you to simply change the default values on the script if your not going to change the values often. That way you don't have to worry about your environment variables being accurately set.</p>
+<p>This could be done by modifying this portion of the script : </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>//<span class="w"> </span>cli.sh<span class="w"> </span>-<span class="w"> </span>line<span class="w"> </span><span class="m">641</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="k">function</span><span class="w"> </span>get_result<span class="o">(){</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">  </span><span class="nb">local</span><span class="w"> </span><span class="nv">proto</span><span class="o">=</span><span class="s2">&quot;https&quot;</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="nv">$notls</span><span class="w"> </span>-eq<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">     </span><span class="nv">proto</span><span class="o">=</span><span class="s2">&quot;http&quot;</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">  </span><span class="k">fi</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-z<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$host</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">     </span><span class="nv">host</span><span class="o">=</span><span class="m">127</span>.0.0.1
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">  </span><span class="k">fi</span>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-z<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$port</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">     </span><span class="nv">port</span><span class="o">=</span><span class="m">1234</span>
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">  </span><span class="k">fi</span>
+</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-z<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$user</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+</span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="w">     </span><span class="nv">user</span><span class="o">=</span><span class="s2">&quot;test&quot;</span>
+</span><span id="__span-4-16"><a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="w">  </span><span class="k">fi</span>
+</span><span id="__span-4-17"><a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-z<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$pass</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+</span><span id="__span-4-18"><a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="w">     </span><span class="nv">pass</span><span class="o">=</span><span class="s2">&quot;test&quot;</span>
+</span><span id="__span-4-19"><a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="w">  </span><span class="k">fi</span>
+</span></code></pre></div>
+<h2 id="cross-chain-exchange-qitmeer-qng">Cross-chain Exchange (Qitmeer -&gt; QNG)</h2>
+<p>It is possible to exchange your MEER coins from the Qitmeer UTXO network to QNG.</p>
+<h3 id="method-1-using-kahf-wallet">Method 1: Using KAHF Wallet</h3>
+<p>You can use the KAHF wallet app to easily transfer MEER from Qitmeer UTXO to QNG</p>
+<ol>
+<li>On the home page, click on the last icon labelled "Transfer"</li>
+</ol>
+<p><img alt="" src="../img/transfer-button.PNG" /></p>
+<ol>
+<li>
+<p>Select the address you would like to send it to and enter the amount.</p>
+</li>
+<li>
+<p>Click "Confirm" and enter your password or fingerprint (if this has been set up).</p>
+</li>
+<li>
+<p>You should see the transaction details on the screen. Click on "Transfer" to finalise the transaction.</p>
+</li>
+</ol>
+<p><img alt="" src="../img/finalise.PNG" /></p>
+<h2 id="add-qng-to-metamask">Add QNG to Metamask</h2>
+<p>You must have the <strong><a href="https://metamask.io/download/">Metamask browser extension</a></strong> installed before proceeding ahead. </p>
+<h3 id="method-1-use-public-rpc-node-easier-option">Method 1: use public RPC node (easier option)</h3>
+<p>You can take advantage of a public RPC endpoint to deploy your smart contracts, rather than host the infrastructure yourself. </p>
+<p>The first thing to do is to add the QNG network to your Metamask wallet.</p>
+<p>Click on the Metamask browser extension icon and click on the circular icon on the top right:</p>
+<p><img alt="" src="../img/metamask-img-1.PNG" /></p>
+<p>Next click on Settings &gt; Networks &gt; Add Network</p>
+<p>Add the following information to allow the wallet to connect to the RPC endpoint: </p>
+<ul>
+<li><strong>Network Name</strong>: QNG - Testnet </li>
+<li><strong>New RPC URL</strong>: https://explorer.qitmeer.io/rpc</li>
+<li><strong>Chain ID</strong>: 223</li>
+<li><strong>Currency Symbol</strong>: MEER</li>
+<li><strong>Block Explorer URL</strong>: https://qng-testnet.meerscan.io/</li>
+</ul>
+<p>It should look something like this:</p>
+<p><img alt="" src="../img/metmask-%20blockURL-change.PNG" /></p>
+<p>Finally, click on the "Save" button. Metamask will attempt to connect to the endpoint. If you do not encounter any errors then the process has been a success.</p>
+<h3 id="method-2-use-own-rpc-node">Method 2: use own RPC node</h3>
+<p>If you would prefer to use your own node, you can configure Metamask to connect to your RPC endpoint using the same method mentioned above. </p>
+<ol>
+<li>The first step is to have the node running with the <code>--evmenv</code> flag enabled with the necessary parameters: <code>./qng --testnet --evmenv="--http --http.port=18545 --http.corsdomain=chrome-extension://nkbihfbeogaeaoehlefnkodbefgpgknn"</code></li>
+</ol>
+<blockquote>
+<p><code>--http.corsdomain</code> must be enabled, with the value equal to the URL of the client that wants to connect to our node. Although you can set the value to "<em>" to allow anybody to connect to the node, </em><em>this is generally bad practice and should only be done inside of a test environment or if you know what you are doing</em>*!</p>
+</blockquote>
+<p>To find the value of <code>--http.corsdomain</code>, click on the Metamask icon and click on account options:</p>
+<p><img alt="" src="../img/metmask-acct-opt.PNG" /></p>
+<p>Click on "Expand View" and copy the URL of the address bar. You should see it starting with <code>chrome-extension://</code> or <code>moz-extension://</code> and copy the URL but removing the <code>/home.html</code> part</p>
+<p><img alt="" src="../img/metamask-copy-url.PNG" /></p>
+<ol>
+<li>
+<p>Add the network to the Metamask wallet using the previous method outlined above. Only the "<strong>New RPC URL</strong>" value should be changed with the remaining parameters being the same as above.</p>
+</li>
+<li>
+<p>Click on the "Save" button. Metamask will attempt to connect to the endpoint. If you do not encounter any errors then the process has been a success. </p>
+</li>
+</ol>
+<h2 id="deploy-smart-contract-on-qng">Deploy Smart Contract on QNG</h2>
+<p>In this section we will attempt to deploy a "Hello World" smart contract on QNG. In this example we will be using <a href="https://remix.ethereum.org/">Remix IDE</a> although you can use any library or development environment (such as Hardhat, Truffle etc.) to complete this task.</p>
+<p>The contract we will attempt to deploy is:
+<div class="language-solidity highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1">// Available at https://blog.chain.link/how-to-create-a-hello-world-smart-contract-with-solidity/</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="c1">// SPDX-License-Identifier: MIT</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="k">pragma solidity</span><span class="w"> </span><span class="o">&gt;=</span><span class="k">0.7.0</span><span class="w"> </span><span class="o">&lt;</span><span class="k">0.9.0</span><span class="p">;</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="k">contract</span><span class="w"> </span><span class="ni">HelloWorld</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">sayHelloWorld</span><span class="p">()</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span>pure<span class="w"> </span><span class="kt">returns</span><span class="w"> </span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="nv">memory</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">        </span><span class="kt">return</span><span class="w"> </span><span class="s2">&quot;Hello World&quot;</span><span class="p">;</span>
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="p">}</span>
+</span></code></pre></div></p>
+<h3 id="connect-metamask-to-remix-ide">Connect Metamask to Remix IDE</h3>
+<ol>
+<li>Select the right network for your Metamask wallet. This should be "QNG - Testnet" (or whatever you decided to call it)</li>
+</ol>
+<p><img alt="" src="../img/remix-metamask-1.PNG" /></p>
+<ol>
+<li>Next visit the <a href="https://remix.ethereum.org">Remix IDE</a> website and click on the "Deploy and run transactions icon"</li>
+</ol>
+<p><img alt="" src="../img/remix-metamask-2.PNG" /></p>
+<ol>
+<li>Click on the "Environment" tab and select "Injected Provider - Metamask". You should recieve a pop-up from Metmask asking whether you would like to connect your wallet. You should click accept. If it was successful, you should not see any errors.</li>
+</ol>
+<p><img alt="" src="../img/remix-metamask-3.PNG" /></p>
+<ol>
+<li>Click on the "File Explorer" tab, click on "Create new file" and name it <code>hello-world.sol</code> and copy and paste the following code:
+<div class="language-solidity highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1">// Available at https://blog.chain.link/how-to-create-a-hello-world-smart-contract-with-solidity/</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="c1">// SPDX-License-Identifier: MIT</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="k">pragma solidity</span><span class="w"> </span><span class="o">&gt;=</span><span class="k">0.7.0</span><span class="w"> </span><span class="o">&lt;</span><span class="k">0.9.0</span><span class="p">;</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="k">contract</span><span class="w"> </span><span class="ni">HelloWorld</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">sayHelloWorld</span><span class="p">()</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span>pure<span class="w"> </span><span class="kt">returns</span><span class="w"> </span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="nv">memory</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">        </span><span class="kt">return</span><span class="w"> </span><span class="s2">&quot;Hello World&quot;</span><span class="p">;</span>
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="p">}</span>
+</span></code></pre></div></li>
+</ol>
+<p><img alt="" src="../img/remix-deploy-1.PNG" /></p>
+<ol>
+<li>Press CTRL + S to compile your contract. You should see a tick if the contract was compiled successfully. </li>
+</ol>
+<p><img alt="" src="../img/remix-deploy-2.PNG" /></p>
+<ol>
+<li>Click on the "Deploy and run transactions tab" and select the "hello-world.sol" smart contract. Click "deploy" to deploy onto QNG. You should get a prompt by Metamask asking whether you would like to confirm the transaction. Click "accept". </li>
+</ol>
+<p><img alt="" src="../img/remix-deploy-3.PNG" /></p>
+<p>We can view our transaction on the QNG Testnet Explorer: https://testnet.qng.meerscan.io/tx/0xbf52631a396aaac1f90c58ee721e5c0c09882564ab2f2e3c52444804780695ca</p>
+<p><img alt="" src="../img/block-explorer.PNG" /></p>
+<ol>
+<li>Contracts that have been deployed will appear in the "Deployed Contracts" section. Click on the "sayHelloWorld" button to call the function. The output should appear below as <code>0:string:Hello World</code></li>
+</ol>
+<p><img alt="" src="../img/remix-deploy-4.PNG" /></p>
+<blockquote>
+<p>As <code>sayHelloWorld()</code> is a pure function, in this instance, a transaction will not be created unlike the contract creation process.</p>
+</blockquote>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../Installation_Running_qng_node/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Running Qitmeer Node">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Running Qitmeer Node
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../solidity_tutorial_basics_part_1/" class="md-footer__link md-footer__link--next" aria-label="Next: Solidity Tutorial (Part 1)">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Solidity Tutorial (Part 1)
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://t.me/+L5nExcssmOxjZTc0" target="_blank" rel="noopener" title="t.me" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M248 8C111.033 8 0 119.033 0 256s111.033 248 248 248 248-111.033 248-248S384.967 8 248 8Zm114.952 168.66c-3.732 39.215-19.881 134.378-28.1 178.3-3.476 18.584-10.322 24.816-16.948 25.425-14.4 1.326-25.338-9.517-39.287-18.661-21.827-14.308-34.158-23.215-55.346-37.177-24.485-16.135-8.612-25 5.342-39.5 3.652-3.793 67.107-61.51 68.335-66.746.153-.655.3-3.1-1.154-4.384s-3.59-.849-5.135-.5q-3.283.746-104.608 69.142-14.845 10.194-26.894 9.934c-8.855-.191-25.888-5.006-38.551-9.123-15.531-5.048-27.875-7.717-26.8-16.291q.84-6.7 18.45-13.7 108.446-47.248 144.628-62.3c68.872-28.647 83.183-33.623 92.511-33.789 2.052-.034 6.639.474 9.61 2.885a10.452 10.452 0 0 1 3.53 6.716 43.765 43.765 0 0 1 .417 9.769Z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.footer"], "search": "../assets/javascripts/workers/search.a264c092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.726fbb30.min.js"></script>
+      
+    
+  </body>
+</html>
