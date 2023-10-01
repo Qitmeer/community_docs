@@ -3,6 +3,8 @@ The Qitmeer community docs and tutorials
 
 To access the document please access [community doc website](https://qitmeer.github.io/community_docs/)
 
+This community documents are also used for doc.meerlabs.com
+
 To contribute to the documentation please fork this repo and create PR.
 
 ## Installation - Mkdocs
