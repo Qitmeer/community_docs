@@ -1,7 +1,35 @@
 # Installation and Running Testing Qitmeer Node
 
 ## Prerequisites
-- Golang (Go) - Download and installation can be found at: https://go.dev/doc/install
+Install Prior to Building QNG:
+
+To build QNG, make sure to install these tools first before doing so:
+- Git (needed to clone repo)
+- Golang (Go) v1.21 or higher
+- Make
+- GCC and development tools
+- Enough disk space (20-30 GB recommended for storing blockchain data)
+- Reliable internet access for syncing your copy of the blockchain
+
+## Install dependencies (Linux)
+
+Make sure that all the tools required to compile QNG software are installed on your Linux machine.
+
+For operating systems like Ubuntu, you can install all tools you will need to build QNG, with the following commands.
+
+sudo apt update
+sudo apt install -y git build-essential make gcc
+
+If you do not yet have Go installed, which is necessary for compiling your own version of QNG, go to this link and download it:
+
+https://go.dev/doc/install
+
+Follow the instructions on the Go installation page, and once installed, run the following commands to make sure you installed Go correctly and it is working.
+go version
+git --version
+make --version
+If all three of these commands run and report back a version number, then you are ready to compile QNG on your Linux platform.
+
 
 ## Compile and build MEER node 
 - Clone the repository: `git clone https://github.com/Qitmeer/qng.git`
@@ -15,6 +43,17 @@
 ```
 
 > Running `make all` will also install <a href="https://github.com/Qitmeer/qng/tree/main/cmd/qx">*qx*</a>, <a href="https://github.com/Qitmeer/qng/tree/main/cmd/relaynode" >*relay*</a> and *<a href="https://github.com/Qitmeer/qng/tree/main/cmd/fastibd">fastIBD</a>*
+
+## Build Output Directory
+The QNG executable will be located in that folder after the successful completion of the build process:
+
+> build/bin/qng
+
+You can confirm the build output using:
+
+> ls build/bin
+
+if the qng file appears there, the build has been successful and the node is prepared to run
 
 ## Install *qx*
 *qx* is a command-line tool and can be regarded as the “Swiss Army Knife of Qitmeer”. It can provide a range of functionalities such as: random seed generation, public/private key generation, constructing transactions etc.
@@ -33,6 +72,35 @@
 ```
 > Installation of *qx* is not mandatory but may prove to be useful to complete certain tasks
 
+## Starting the QNG Node
+
+After compilation, start the QNG node using:
+
+./build/bin/qng
+
+When the node runs for the first time, it will automatically:
+
+- Create local blockchain storage
+- Connect to other peers in the network
+- Begin downloading and verifying blockchain data
+- Start processing blocks
+
+Initial synchronization may take some time depending on network speed and system performance.
+
+## Common Errors and Troubleshooting
+
+Some common problems you may face when installing or running a QNG node are:
+
+1. Datadir Already in Use/Being Used by Another Process** - You’ll get this error if you already have another instance of QNG running. Please ensure to stop the previous instance of QNG before starting a new one.
+2. Peer Connection Timeout or "i/o Deadline Reached"** - Messages such as these are common in decentralized networks and indicate that some of your peers are no longer responding, so the database is unable to connect. When this occurs, the node automatically reconnects to the peers and continues to keep the blockchains in sync.
+3. Missing Tools/Build Errors** - If you are experiencing issues trying to run commands like make or go,this means you do not have all of the dependencies required to use QNG properly. Please install any missing dependencies.
+
+## Stopping the Node Safely
+To safely shut down a QNG node that is running, use Ctrl + C in the terminal where the node is being executed.
+
+Properly terminating the node will guarantee that blockchain data is saved correctly and won't become locked or corrupted upon later startup.
+
+If you have accidentally closed the terminal and the node is still on, you need to manually terminate the node before running a new instance of it.
 
 ## Create Wallet (KAHF Wallet)
 ![KAHF Wallet](https://www.kahf.io/images/logo.png)
